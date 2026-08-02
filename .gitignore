@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+
+# Logs
+*.log
+
+# Data
+data/raw/*
+data/processed/*
+
+# Exceptions
+!data/raw/.gitkeep
+!data/processed/.gitkeep

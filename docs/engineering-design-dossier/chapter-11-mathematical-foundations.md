@@ -126,7 +126,9 @@ An N-bit ADC divides the full-scale voltage range $V_{\text{FS}}$ into $2^N$ dis
 **Ideal Transfer Function:**
 
 $$
+
 C = \left\lfloor \frac{V_{\text{in}}}{V_{\text{REF}}} \times (2^N - 1) \right\rfloor
+
 $$
 
 **Variables:**
@@ -170,7 +172,9 @@ def code_to_voltage(code, vref=3.3, n_bits=12):
 **Equation:**
 
 $$
+
 V_{\text{out}} = C \times \frac{V_{\text{REF}}}{2^N - 1}
+
 $$
 
 **Variables:**
@@ -189,7 +193,9 @@ $$
 **Equation:**
 
 $$
+
 C = \left\lfloor \frac{V_{\text{in}} \times (2^N - 1)}{V_{\text{REF}}} \right\rfloor
+
 $$
 
 **Usage:**
@@ -204,13 +210,17 @@ $$
 **Least Significant Bit (LSB) Voltage:**
 
 $$
+
 V_{\text{LSB}} = \frac{V_{\text{REF}}}{2^N - 1}
+
 $$
 
 **For STM32 (12-bit, 3.3 V):**
 
 $$
+
 V_{\text{LSB}} = \frac{3.3}{4095} \approx 0.806 \text{ mV}
+
 $$
 
 **Physical Meaning:**
@@ -229,7 +239,9 @@ $$
 **Maximum Error:**
 
 $$
+
 \epsilon_{\text{quant}} = \pm \frac{V_{\text{LSB}}}{2} = \pm 0.403 \text{ mV}
+
 $$
 
 **Distribution:**
@@ -253,7 +265,9 @@ Relates digital input code to analog output voltage.
 **Ideal Transfer Function:**
 
 $$
+
 V_{\text{out}} = C \times \frac{V_{\text{REF}}}{2^N - 1}
+
 $$
 
 **Variables:**
@@ -327,20 +341,27 @@ $$
 **Noise Power (Variance):**
 
 $$
+
 P_{\text{quant}} = \frac{V_{\text{LSB}}^2}{12}
+
 $$
 
 **Derivation:**
 
 - For uniform distribution over $[-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]$:
+
 $$
+
 \sigma^2 = \frac{(b - a)^2}{12} = \frac{V_{\text{LSB}}^2}{12}
+
 $$
 
 **RMS Quantization Noise:**
 
 $$
+
 V_{\text{noise,rms}} = \sqrt{P_{\text{quant}}} = \frac{V_{\text{LSB}}}{\sqrt{12}}
+
 $$
 
 **For STM32:**
@@ -360,13 +381,17 @@ $$
 **SNR (dB):**
 
 $$
+
 \text{SNR}_{\text{quant}} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{quant}}} \right) = 6.02 N + 1.76 \text{ dB}
+
 $$
 
 **For N = 12:**
 
 $$
+
 \text{SNR}_{\text{quant}} = 6.02 \times 12 + 1.76 \approx 74 \text{ dB}
+
 $$
 
 **Usage:**
@@ -385,7 +410,9 @@ $$
 A continuous-time signal with maximum frequency $f_{\text{max}}$ can be perfectly reconstructed from its samples if the sampling frequency $f_s$ satisfies:
 
 $$
+
 f_s > 2 f_{\text{max}}
+
 $$
 
 **Derivation (Intuitive):**
@@ -396,7 +423,9 @@ $$
 **Nyquist Frequency:**
 
 $$
+
 f_{\text{Nyquist}} = \frac{f_s}{2}
+
 $$
 
 **Usage:**
@@ -415,7 +444,9 @@ $$
 **Aliased Frequency:**
 
 $$
+
 f_{\text{alias}} = |f_{\text{in}} - k f_s|
+
 $$
 
 where $k$ is integer such that $f_{\text{alias}} \in [0, f_{\text{Nyquist}}]$.
@@ -423,7 +454,7 @@ where $k$ is integer such that $f_{\text{alias}} \in [0, f_{\text{Nyquist}}]$.
 **Example:**
 
 - $f_s = 100$ kSPS, $f_{\text{in}} = 60$ kHz.
-- $f_{\text{alias}} = |60 - 100| = 40$ kHz.
+- equation kHz.
 
 **Mitigation:**
 
@@ -465,7 +496,9 @@ where $k$ is integer such that $f_{\text{alias}} \in [0, f_{\text{Nyquist}}]$.
 **STM32 Timer Equation:**
 
 $$
+
 f_{\text{update}} = \frac{f_{\text{timer}}}{(\text{PSC} + 1) \times (\text{ARR} + 1)}
+
 $$
 
 **Variables:**
@@ -480,8 +513,11 @@ $$
 - Desired $f_{\text{update}} = 100$ kSPS.
 - Choose PSC = 0 (no prescaling).
 - Solve for ARR:
+
 $$
+
 \text{ARR} = \frac{84 \times 10^6}{100 \times 10^3} - 1 = 839
+
 $$
 
 **Implementation (Firmware):**
@@ -516,7 +552,9 @@ $$
 **Baud Rate:**
 
 $$
+
 \text{Baud} = \frac{f_{\text{UART}}}{\text{DIV}}
+
 $$
 
 where DIV is integer divider.
@@ -541,14 +579,20 @@ where DIV is integer divider.
 The Probability Density Function (PDF), $p(x)$, describes the likelihood of a continuous random variable $x$ taking a specific value. For a voltage signal $v(t)$, the PDF indicates how much time the signal spends at each voltage level.
 
 **Normalization Condition:**
+
 $$
+
 \int_{-\infty}^{\infty} p(v) \, dv = 1
+
 $$
 
 **Probability in Interval:**
 The probability that $v(t)$ lies between $V_1$ and $V_2$ is:
+
 $$
+
 P(V_1 \le v \le V_2) = \int_{V_1}^{V_2} p(v) \, dv
+
 $$
 
 **Engineering Significance:**  
@@ -563,9 +607,13 @@ Apply an input signal that sweeps the entire ADC input range uniformly. Count th
 
 **Ideal Input:**  
 A linear ramp signal $v(t) = \alpha t$ has a uniform PDF:
+
 $$
+
 p(v) = \begin{cases} \frac{1}{V_{\text{FS}}} & 0 \le v \le V_{\text{FS}} \\ 0 & \text{otherwise} \end{cases}
+
 $$
+
 where $V_{\text{FS}}$ is the full-scale voltage range.
 
 **Histogram Formation:**  
@@ -573,8 +621,11 @@ For an $N$-bit ADC, there are $2^N$ possible codes. Let $H[k]$ be the number of 
 
 **Ideal Histogram:**  
 For a uniform input, the expected count for every code is:
+
 $$
+
 H_{\text{ideal}}[k] = \frac{M}{2^N}
+
 $$
 
 **Non-Ideal Histogram:**  
@@ -594,19 +645,30 @@ The input voltage at which the ADC output transitions from code $k-1$ to code $k
 
 **Code Width ($W_k$):**  
 The voltage range corresponding to code $k$:
+
 $$
+
 W_k = T_{k+1} - T_k
+
 $$
+
 For an ideal ADC, $W_k = 1 \text{ LSB}$ for all $k$.
 
 **Relation to Histogram:**  
 The histogram count $H[k]$ is proportional to the code width $W_k$:
+
 $$
+
 H[k] \propto W_k
+
 $$
+
 Specifically, for a uniform input slope $\frac{dv}{dt}$ and sampling rate $f_s$:
+
 $$
+
 H[k] \approx \frac{W_k}{\text{slope}} \times f_s
+
 $$
 
 **Implementation (Host Software):**  
@@ -622,20 +684,30 @@ The `compute_histogram` function in `signal_processing.py` (Chapter 9) builds th
 DNL measures the deviation of each code width from the ideal width (1 LSB). It indicates local linearity errors.
 
 **Ideal Code Width:**
+
 $$
+
 W_{\text{ideal}} = 1 \text{ LSB} = \frac{V_{\text{REF}}}{2^N - 1}
+
 $$
 
 **Actual Code Width (Normalized):**  
 Using the histogram method, the normalized code width for code $k$ is estimated as:
+
 $$
+
 \hat{W}_k = \frac{H[k]}{H_{\text{avg}}}
+
 $$
+
 where $H_{\text{avg}} = \frac{1}{2^N - 2} \sum_{k=1}^{2^N-2} H[k]$ is the average hit count (excluding first and last codes which are often distorted).
 
 **DNL Equation:**
+
 $$
+
 \text{DNL}[k] = \hat{W}_k - 1 = \frac{H[k]}{H_{\text{avg}}} - 1
+
 $$
 
 **Variables:**
@@ -694,9 +766,13 @@ INL measures the cumulative deviation of transition points from their ideal posi
 
 **Endpoint Method:**  
 INL at code $k$ is the sum of DNL errors from code 1 up to $k-1$:
+
 $$
+
 \text{INL}[k] = \sum_{i=1}^{k-1} \text{DNL}[i]
+
 $$
+
 Boundary conditions: $\text{INL} = 0$, $\text{INL}[2^N-1] = 0$ (forced by definition). [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
 
 **Physical Interpretation:**  
@@ -731,15 +807,22 @@ Instead of fixing endpoints, a straight line is fitted to the transfer curve (e.
 
 **Fourier Series:**  
 Any periodic signal $x(t)$ with period $T$ can be represented as a sum of sinusoids:
+
 $$
+
 x(t) = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos(2\pi n f_0 t) + b_n \sin(2\pi n f_0 t) \right)
+
 $$
+
 where $f_0 = 1/T$.
 
 **Discrete Fourier Transform (DFT):**  
 For a discrete sequence $x[n]$ of length $N$:
+
 $$
+
 X[k] = \sum_{n=0}^{N-1} x[n] e^{-j 2\pi k n / N}, \quad k = 0, \dots, N-1
+
 $$
 
 **Variables:**
@@ -750,9 +833,13 @@ $$
 
 **Frequency Resolution:**  
 The frequency corresponding to bin $k$ is:
+
 $$
+
 f_k = k \cdot \frac{f_s}{N}
+
 $$
+
 where $f_s$ is the sampling frequency.
 
 **Nyquist Limit:**  
@@ -791,20 +878,23 @@ The DFT assumes the input signal is periodic with period $N$. If the signal is n
 Multiply the input signal $x[n]$ by a window function $w[n]$ that tapers to zero at the edges.
 
 **Windowed Signal:**
+
 $$
+
 x_w[n] = x[n] \cdot w[n]
+
 $$
 
 ***
 
 #### 11.12.2 Common Windows
 
-| Window | Equation \(w[n]\) | Main Lobe Width | Side Lobe Attenuation | Usage |
+| Window | Equation equation | Main Lobe Width | Side Lobe Attenuation | Usage |
 |--------|---------------------|-----------------|-----------------------|-------|
-| **Rectangular** | $ 1 $ | Narrowest (1 bin) | -13 dB | Coherent sampling only |
-| **Hann** | \(0.5 - 0.5 \cos(\frac{2\pi n}{N-1})\) | 2 bins | -31 dB | General purpose |
-| **Hamming** | \(0.54 - 0.46 \cos(\frac{2\pi n}{N-1})\) | 2 bins | -41 dB | Better side lobe suppression |
-| **Blackman** | \(0.42 - 0.5 \cos(\dots) + 0.08 \cos(\dots)\) | 3 bins | -58 dB | High dynamic range |
+| **Rectangular** | equation | Narrowest (1 bin) | -13 dB | Coherent sampling only |
+| **Hann** | equation | 2 bins | -31 dB | General purpose |
+| **Hamming** | equation | 2 bins | -41 dB | Better side lobe suppression |
+| **Blackman** | equation | 3 bins | -58 dB | High dynamic range |
 | **Flat-top** | Complex sum of cosines | Wide | -90 dB | Amplitude accuracy |
 
 **Selection for This Project:**  
@@ -824,11 +914,17 @@ $$
 Ratio of the RMS sum of harmonics to the RMS value of the fundamental.
 
 **Equation:**
+
 $$
+
 \text{THD} = \frac{\sqrt{\sum_{h=2}^{H} V_h^2}}{V_1}
+
 $$
+
 $$
+
 \text{THD}_{\text{dB}} = 20 \log_{10}(\text{THD})
+
 $$
 
 **Variables:**
@@ -850,14 +946,20 @@ $$
 Ratio of signal power to noise power (excluding harmonics).
 
 **Equation:**
+
 $$
+
 \text{SNR} = 10 \log_{10} \left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right) \text{ dB}
+
 $$
 
 **Noise Power:**  
 Sum of magnitudes of all bins excluding DC, fundamental, and harmonics.
+
 $$
+
 P_{\text{noise}} = \sum_{k \in \text{noise bins}} |X[k]|^2
+
 $$
 
 ***
@@ -868,8 +970,11 @@ $$
 The resolution of an ideal ADC that would produce the same SNR.
 
 **Equation:**
+
 $$
+
 \text{ENOB} = \frac{\text{SNR}_{\text{measured}} - 1.76}{6.02}
+
 $$
 
 **Derivation:**  
@@ -888,23 +993,35 @@ Key metric for ADC performance characterization in Chapter 10.
 Series resistor $R$, shunt capacitor $C$.
 
 **Transfer Function $H(s)$:**
+
 $$
+
 H(s) = \frac{V_{\text{out}}(s)}{V_{\text{in}}(s)} = \frac{1}{1 + sRC}
+
 $$
 
 **Cutoff Frequency** ($f_c$):
+
 $$
+
 f_c = \frac{1}{2\pi RC}
+
 $$
 
 **Magnitude Response:**
+
 $$
+
 |H(j\omega)| = \frac{1}{\sqrt{1 + (\omega RC)^2}}
+
 $$
 
 **Phase Response:**
+
 $$
+
 \phi(\omega) = -\arctan(\omega RC)
+
 $$
 
 **Example (Chapter 8 Values):**  
@@ -921,18 +1038,27 @@ This filter acts as an anti-aliasing filter for the ADC, attenuating frequencies
 #### 11.15.1 Absolute and Relative Error
 
 **Absolute Error:**
+
 $$
+
 \epsilon = V_{\text{measured}} - V_{\text{true}}
+
 $$
 
 **Relative Error:**
+
 $$
+
 \epsilon_{\text{rel}} = \frac{\epsilon}{V_{\text{true}}}
+
 $$
 
 **Percentage Error:**
+
 $$
+
 \epsilon_{\%} = \epsilon_{\text{rel}} \times 100\%
+
 $$
 
 **Usage:**  
@@ -946,21 +1072,32 @@ Calibration (Chapter 10) uses these to quantify offset and gain errors.
 
 **Law of Propagation of Uncertainty:**  
 If $y = f(x_1, x_2, \dots)$, the combined standard uncertainty $u_c(y)$ is:
+
 $$
+
 u_c(y) = \sqrt{ \sum_{i} \left( \frac{\partial f}{\partial x_i} u(x_i) \right)^2 }
+
 $$
+
 (Assuming uncorrelated inputs).
 
 **Example (Voltage Measurement):**  
 $V = C \cdot \frac{V_{\text{REF}}}{4095}$.
+
 $$
+
 u_c(V) = \sqrt{ \left( \frac{V_{\text{REF}}}{4095} u(C) \right)^2 + \left( \frac{C}{4095} u(V_{\text{REF}}) \right)^2 }
+
 $$
 
 **Expanded Uncertainty:**  
+
 $$
+
 U = k \cdot u_c(y)
+
 $$
+
 where $k$ is the coverage factor (typically $k=2$ for 95% confidence).
 
 ***
@@ -970,18 +1107,27 @@ where $k$ is the coverage factor (typically $k=2$ for 95% confidence).
 #### 11.17.1 Mean and Variance
 
 **Arithmetic Mean:**
+
 $$
+
 \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+
 $$
 
 **Variance:**
+
 $$
+
 s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+
 $$
 
 **Standard Deviation:**
+
 $$
+
 s = \sqrt{s^2}
+
 $$
 
 **Usage:**  
@@ -994,11 +1140,11 @@ $$
 
 | Algorithm | Complexity | Notes |
 |-----------|------------|-------|
-| **FFT** | \(O(N \log N)\) | Dominant cost in host analysis |
-| **Histogram** | \(O(N)\) | Linear scan of samples |
-| **DNL/INL** | \(O(2^N)\) | Constant time (4096 iterations) |
-| **Parser** | \(O(L)\) | Linear in packet length |
-| **Plotting** | \(O(N)\) | Proportional to data points |
+| **FFT** | equation | Dominant cost in host analysis |
+| **Histogram** | equation | Linear scan of samples |
+| **DNL/INL** | equation | Constant time (4096 iterations) |
+| **Parser** | equation | Linear in packet length |
+| **Plotting** | equation | Proportional to data points |
 
 **Engineering Significance:**  
 Ensures host software can process 50k samples in < 1 second (SR-011).
@@ -1047,12 +1193,12 @@ Every equation derived here is tested in the Verification Plan (e.g., SNR formul
 
 | Formula | Variables | Units | Purpose | Used In | Assumptions | Related Chapter |
 |---------|-----------|-------|---------|---------|-------------|---------------|
-| \(V_{\text{LSB}} = \frac{V_{\text{REF}}}{2^N - 1}\) | \(V_{\text{REF}}\): Ref Voltage, \(N\): Bits | Volts | ADC/DAC resolution | All | Ideal converter | 8, 9 |
-| \(\text{SNR} = 6.02 N + 1.76\) | \(N\): Bits | dB | Theoretical max SNR | 10, 11 | Quantization noise only | 10 |
-| \(\text{DNL}[k] = \frac{H[k]}{H_{\text{avg}}} - 1\) | \(H[k]\): Histogram count | LSB | Local linearity error | 9, 10 | Uniform input PDF | 10 |
-| \(\text{INL}[k] = \sum_{i=1}^{k-1} \text{DNL}[i]\) | \(\text{DNL}\): Diff. Non-Linearity | LSB | Cumulative linearity error | 9, 10 | Endpoint method | 10 |
-| \(f_c = \frac{1}{2\pi RC}\) | \(R\): Resistance, \(C\): Capacitance | Hz | RC filter cutoff | 8 | Ideal components | 8 |
-| \(\text{THD} = \frac{\sqrt{\sum V_h^2}}{V_1}\) | \(V_h\): Harmonics, \(V_1\): Fundamental | Ratio | Distortion metric | 9, 10 | Sinusoidal input | 10 |
-| \(\text{ENOB} = \frac{\text{SNR} - 1.76}{6.02}\) | \(\text{SNR}\): Measured SNR | Bits | Effective resolution | 10 | Sinusoidal input | 10 |
+| equation | equation: Ref Voltage, equation: Bits | Volts | ADC/DAC resolution | All | Ideal converter | 8, 9 |
+| equation | equation: Bits | dB | Theoretical max SNR | 10, 11 | Quantization noise only | 10 |
+| equation | equation: Histogram count | LSB | Local linearity error | 9, 10 | Uniform input PDF | 10 |
+| equation | equation: Diff. Non-Linearity | LSB | Cumulative linearity error | 9, 10 | Endpoint method | 10 |
+| equation | equation: Resistance, equation: Capacitance | Hz | RC filter cutoff | 8 | Ideal components | 8 |
+| equation | equation: Harmonics, equation: Fundamental | Ratio | Distortion metric | 9, 10 | Sinusoidal input | 10 |
+| equation | equation: Measured SNR | Bits | Effective resolution | 10 | Sinusoidal input | 10 |
 
 ***

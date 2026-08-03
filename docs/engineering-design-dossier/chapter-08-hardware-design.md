@@ -434,8 +434,11 @@ Facilitate debugging and measurement.
 - Output: 0–3.3 V.
 - Ratio: 3.3/5 = 0.66.
 - Choose R1 = 10 kΩ, R2 = 20 kΩ:
+
 $$
+
 V_{\text{out}} = V_{\text{in}} \cdot \frac{R2}{R1 + R2} = V_{\text{in}} \cdot \frac{20}{30} = 0.667 V_{\text{in}}
+
 $$
 
 ### 8.7.3 Filter Design
@@ -443,12 +446,19 @@ $$
 **RC Low-Pass:**
 
 - Cutoff frequency:
+
 $$
+
 f_c = \frac{1}{2 \pi R C}
+
 $$
+
 - Example: R = 1 kΩ, C = 100 nF:
+
 $$
+
 f_c = \frac{1}{2 \pi \cdot 1000 \cdot 100 \times 10^{-9}} \approx 1.59 \text{ kHz}
+
 $$
 
 ### 8.7.4 Input/Output Impedance
@@ -512,17 +522,25 @@ $$
 ### 8.10.3 ADC Source Impedance
 
 - Divider output impedance:
+
 $$
+
 Z_{\text{out}} = \frac{R1 \cdot R2}{R1 + R2} = \frac{10k \cdot 20k}{30k} \approx 6.67 \text{ kΩ}
+
 $$
+
   Acceptable (< 10 kΩ).
 
 ### 8.10.4 Current and Power
 
 - Series resistor 1 kΩ, 3.3 V:
+
 $$
+
 I = \frac{3.3}{1000} = 3.3 \text{ mA}, \quad P = I^2 R = 10.9 \text{ mW}
+
 $$
+
   Well within 1/4 W rating.
 
 ***

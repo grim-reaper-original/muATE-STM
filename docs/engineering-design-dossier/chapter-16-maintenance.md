@@ -266,7 +266,9 @@ For μATE-STM (educational instrument, low stress):
 ### 16.5.4 Availability
 
 $$
+
 A = \frac{50,000}{50,000 + 3} \approx 99.994\%
+
 $$
 
 **Interpretation:** High availability; downtime is minimal.
@@ -283,8 +285,11 @@ $$
 **Exponential Distribution:** $P(t) = 1 - e^{-\lambda t}$, where $\lambda = 1/\text{MTBF}$.
 
 **Example:** Probability of failure in 1 year (8,760 hours):
+
 $$
+
 P(8760) = 1 - e^{-8760/50000} \approx 16\%
+
 $$
 
 ### 16.5.7 Reliability Growth
@@ -948,4 +953,3 @@ Proper maintenance, documentation, and engineering discipline ensure that μATE-
 By treating maintenance as a design requirement, not an afterthought, μATE-STM will serve as a reliable, extensible platform for education and research for years to come.
 
 ***
-

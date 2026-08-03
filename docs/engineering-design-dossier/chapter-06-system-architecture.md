@@ -978,8 +978,11 @@ This section quantifies timing behavior and constraints. Calculations use typica
 - ADC clock: ≤ 36 MHz (per datasheet).
 - Sample time: configurable (e.g., 3, 15, 28, … cycles).
 - Conversion time (12-bit):
+
 $$
+
 T_{\text{conv}} = T_{\text{sample}} + 12 \text{ cycles}
+
 $$
 
 **Example:**
@@ -988,12 +991,19 @@ $$
 - Sample time = 15 cycles.
 - Conversion cycles = 15 + 12 = 27 cycles.
 - Conversion time:
+
 $$
+
 T_{\text{conv}} = 27 \times 27.78 \text{ ns} \approx 750 \text{ ns}
+
 $$
+
 - Maximum theoretical sampling rate:
+
 $$
+
 f_s = \frac{1}{T_{\text{conv}}} \approx 1.33 \text{ MSPS}
+
 $$
 
 In practice, due to timer overhead and DMA, a **sustainable rate of 200 kSPS–1 MSPS** is a realistic target for initial designs.
@@ -1011,8 +1021,11 @@ In practice, due to timer overhead and DMA, a **sustainable rate of 200 kSPS–1
 - Timer clock = 84 MHz (with APB1 prescaler).
 - Desired update rate = 100 kSPS.
 - Timer period:
+
 $$
+
 \text{ARR} = \frac{f_{\text{timer}}}{f_{\text{update}}} - 1 = \frac{84 \times 10^6}{100 \times 10^3} - 1 = 839
+
 $$
 
 This yields a 100 kSPS DAC update rate with ample CPU headroom.
@@ -1022,9 +1035,13 @@ This yields a 100 kSPS DAC update rate with ample CPU headroom.
 - Use **one timer for DAC updates** and **one timer for ADC triggers**, optionally synchronized.
 - For coherent sampling:
   - Ensure:
+
 $$
+
 f_{\text{signal}} = \frac{M}{N} f_s
+
 $$
+
     where $M$ is integer cycles, $N$ is FFT size, $f_s$ is sampling rate.
 - Timer prescalers and auto-reload registers chosen to hit desired rates within integer constraints.
 
@@ -1045,12 +1062,19 @@ $$
 - Baud rate: 115,200 bps.
 - Frame: 1 start, 8 data, 1 stop = 10 bits per byte.
 - Effective throughput:
+
 $$
+
 \frac{115,200}{10} = 11,520 \text{ bytes/s}
+
 $$
+
 - For 16-bit samples (2 bytes):
+
 $$
+
 \text{Max sample rate} \approx \frac{11,520}{2} \approx 5,760 \text{ samples/s}
+
 $$
 
 This is a bottleneck for high-speed acquisition.
@@ -1066,8 +1090,11 @@ This is a bottleneck for high-speed acquisition.
 **Example at 921,600 baud:**
 
 - Throughput:
+
 $$
+
 \frac{921,600}{10} = 92,160 \text{ bytes/s} \Rightarrow \approx 46,000 \text{ samples/s}
+
 $$
 
 Sufficient for 10k–50k sample tests in 1–2 seconds of streaming.
@@ -1083,8 +1110,11 @@ Sufficient for 10k–50k sample tests in 1–2 seconds of streaming.
 
 - Sample size: 16 bits (2 bytes).
 - Buffer for 50k samples:
+
 $$
+
 50,000 \times 2 = 100,000 \text{ bytes} \approx 97.7 \text{ kB}
+
 $$
 
 This leaves ~30 kB for stack, heap, and other variables, which is acceptable but tight.
@@ -1116,9 +1146,13 @@ This leaves ~30 kB for stack, heap, and other variables, which is acceptable but
 
 - Nyquist limit:
   - Maximum measurable signal frequency:
+
 $$
+
 f_{\text{max}} = \frac{f_s}{2}
+
 $$
+
   - For $f_s = 200$ kSPS → $f_{\text{max}} = 100$ kHz.
 - Anti-aliasing:
   - AFE should include low-pass filter with cutoff < $f_s/2$.
@@ -1812,4 +1846,3 @@ Decompose the system into clearly defined subsystems (Test Orchestration, Stimul
 
 - Easier to add new features (e.g., additional sensors).
 - Clear structure for portfolio and documentation.
-

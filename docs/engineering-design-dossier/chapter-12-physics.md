@@ -63,9 +63,13 @@ A charge creates an electric field **E** in V/m that exerts force on other charg
 Current, denoted by **I** (amperes), is the flow of charge. In conductors, electrons drift at slow velocities ($\sim 1$ mm/s) but the electric field propagates near light speed.
 
 **Current Density:**
+
 $$
+
 \mathbf{J} = \sigma \mathbf{E}
+
 $$
+
 where $\sigma$ is conductivity.
 
 **Engineering Implication:**  
@@ -103,9 +107,13 @@ If no reference is shared (e.g., battery-powered STM32 and laptop), communicatio
 Electrons collide with atoms in the conductor lattice, losing energy as heat. Resistance **R** quantifies this opposition.
 
 **Ohm's Law (Physical View):**
+
 $$
+
 V = I R
+
 $$
+
 Voltage drives current, while resistance dissipates energy according to $P = I^2 R$.
 
 ### 12.4.2 Temperature Dependence
@@ -126,14 +134,21 @@ For carbon/metal film resistors: $\alpha \approx 50–100$ ppm/°C.
 Thermal agitation of electrons creates random voltage fluctuations.
 
 **RMS Noise Voltage:**
+
 $$
+
 V_{\text{noise,rms}} = \sqrt{4 k_B T R \Delta f}
+
 $$
+
 where $k_B$ is Boltzmann's constant, $T$ is temperature (K), $\Delta f$ is bandwidth.
 
 **Example (1 kΩ, 10 kHz BW, 300 K):**
+
 $$
+
 V_{\text{noise}} \approx \sqrt{4 \times 1.38 \times 10^{-23} \times 300 \times 1000 \times 10^4} \approx 400 \text{ nV}
+
 $$
 
 **Relevance:**  
@@ -149,9 +164,13 @@ Negligible compared to ADC quantization noise (0.8 mV), but important for high-g
 A capacitor stores energy in the electric field between two conductive plates separated by a dielectric.
 
 **Capacitance:**
+
 $$
+
 C = \frac{\varepsilon A}{d}
+
 $$
+
 where $\varepsilon$ is permittivity, $A$ is area, $d$ is separation.
 
 **Charging/Discharging:**  
@@ -183,9 +202,13 @@ Any two conductors separated by an insulator form a capacitor. Breadboard rows h
 
 **Physical Principle:**  
 Current flowing through a conductor creates a magnetic field. Changing current induces voltage (Faraday's Law):
+
 $$
+
 V = L \frac{dI}{dt}
+
 $$
+
 where $L$ is inductance (henries).
 
 **Self-Inductance:**  
@@ -271,8 +294,11 @@ A switch connects the input to a capacitor for a fixed time (acquisition). The c
 
 **Acquisition Time:**  
 Must be long enough for the capacitor to charge to within ½ LSB of the input voltage.
+
 $$
+
 t_{\text{acq}} \geq R_{\text{source}} C_{\text{sample}} \ln(2^N)
+
 $$
 
 **Engineering Implication:**  
@@ -344,9 +370,13 @@ Random variation in clock edge timing.
 
 **Impact on ADC:**  
 Jitter causes sampling time uncertainty ($\Delta t$), leading to voltage error:
+
 $$
+
 \Delta V = \frac{dV}{dt} \Delta t
+
 $$
+
 For high-frequency signals ($\frac{dV}{dt}$ is large), jitter significantly degrades SNR.
 
 **Engineering Implication:**  
@@ -364,8 +394,11 @@ If a signal changes faster than the sampling rate, the samples cannot uniquely r
 
 **Frequency Folding:**  
 Frequencies above $f_s/2$ appear as lower frequencies:
+
 $$
+
 f_{\text{alias}} = |f_{\text{in}} - k f_s|
+
 $$
 
 **Anti-Aliasing Filter:**  
@@ -400,9 +433,13 @@ White noise (flat power spectral density).
 Discrete nature of charge carriers crossing a potential barrier (e.g., PN junction).
 
 **Magnitude:**  
+
 $$
+
 I_{\text{noise,rms}} = \sqrt{2 q I \Delta f}
+
 $$
+
 Negligible in low-current CMOS circuits.
 
 ### 12.13.3 Flicker Noise (1/f Noise)
@@ -486,9 +523,13 @@ Time to reach within 1% of final value: $t_s \approx 5 RC$.
 Power dissipation ($P = I^2 R$) raises component temperature.
 
 **Thermal Resistance:**  
+
 $$
+
 \Delta T = P \times \theta_{\text{JA}}
+
 $$
+
 where $\theta_{\text{JA}}$ is junction-to-ambient thermal resistance.
 
 **Impact:**  
@@ -676,7 +717,9 @@ The transfer function is $H(s)=\frac{1}{1+sRC}$.
 ## Display
 
 $$
+
 H(s)=\frac{1}{1+sRC}
+
 $$
 
 ## Greek letters
@@ -686,8 +729,10 @@ $\sigma = \frac{1}{\rho}$
 ## Matrix
 
 $$
+
 \begin{bmatrix}
 1 & 2\\
 3 & 4
 \end{bmatrix}
+
 $$

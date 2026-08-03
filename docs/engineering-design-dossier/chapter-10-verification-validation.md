@@ -550,9 +550,13 @@ Determine and correct ADC gain (scale factor) error.
 2. Compute mean code: $\bar{C}_{\text{full}}$.
 3. Ideal full-scale code: $C_{\text{ideal}} = 4095$.
 4. Expected code for $V_{\text{ref\_actual}}$:
+
 $$
+
 C_{\text{expected}} = \frac{V_{\text{ref\_actual}}}{V_{\text{REF\_nominal}}} \times 4095
+
 $$
+
    where $V_{\text{REF\_nominal}} = 3.3$ V.
 5. Gain error: $\text{Gain}_{\text{ADC}} = \frac{C_{\text{expected}}}{\bar{C}_{\text{full}}}$.
 
@@ -627,8 +631,11 @@ Determine DAC gain error.
 **Equation:**
 
 - Corrected code for target voltage $V_{\text{target}}$:
+
 $$
+
 C_{\text{target}} = \frac{V_{\text{target}}}{V_{\text{REF\_actual}} \times \text{Gain}_{\text{DAC}}} \times 4095
+
 $$
 
 **Acceptance Limits:**
@@ -704,8 +711,11 @@ This section estimates uncertainty contributions from all sources and combines t
 For voltage measurement $V = C \times \frac{V_{\text{REF}}}{4095}$:
 
 - **Combined standard uncertainty:**
+
 $$
+
 u_c(V) = \sqrt{ \left( \frac{\partial V}{\partial C} u(C) \right)^2 + \left( \frac{\partial V}{\partial V_{\text{REF}}} u(V_{\text{REF}}) \right)^2 }
+
 $$
 
 **Example Calculation:**
@@ -715,13 +725,21 @@ $$
 - $u(V_{\text{REF}}) = 33$ mV (DMM).
 
 $$
+
 \frac{\partial V}{\partial C} = \frac{3.3}{4095} \approx 0.806 \text{ mV/LSB}
+
 $$
+
 $$
+
 \frac{\partial V}{\partial V_{\text{REF}}} = \frac{2048}{4095} \approx 0.5
+
 $$
+
 $$
+
 u_c(V) = \sqrt{ (0.806 \times 0.5)^2 + (0.5 \times 33)^2 } \approx \sqrt{ 0.16 + 272 } \approx 16.5 \text{ mV}
+
 $$
 
 **Dominant term:** VREF uncertainty.
@@ -741,8 +759,11 @@ $$
 | **Total (RSS)** | — | — | — | — | **±35 mV (worst-case)** |
 
 **RSS (Root Sum Square):**
+
 $$
+
 \text{Total} = \sqrt{0.4^2 + 0.4^2 + 33^2 + 2^2 + 0.5^2} \approx 33.2 \text{ mV}
+
 $$
 
 ***
@@ -812,9 +833,13 @@ $$
 #### 10.15.3 Confidence Intervals
 
 - **95% Confidence Interval:**
+
 $$
+
 \text{CI} = \bar{x} \pm t_{0.975, n-1} \times \frac{s}{\sqrt{n}}
+
 $$
+
   where $\bar{x}$ = mean, $s$ = std dev, $n$ = 10.
 
 ***
@@ -823,10 +848,10 @@ $$
 
 | Statistic | Formula | Usage |
 |-----------|---------|-------|
-| Mean | \(\bar{x} = \frac{1}{n} \sum x_i\) | Central tendency of metrics |
-| Variance | \(s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2\) | Spread of data |
-| Standard Deviation | \(s = \sqrt{s^2}\) | Repeatability metric |
-| 95% CI | \(\bar{x} \pm 1.96 \frac{s}{\sqrt{n}}\) (large n) | Uncertainty in mean |
+| Mean | equation | Central tendency of metrics |
+| Variance | equation | Spread of data |
+| Standard Deviation | equation | Repeatability metric |
+| 95% CI | equation (large n) | Uncertainty in mean |
 | Outlier Detection | Z-score > 3 or IQR method | Identify anomalous tests |
 | Uncertainty Estimation | RSS of Type A + Type B | Combined measurement uncertainty |
 

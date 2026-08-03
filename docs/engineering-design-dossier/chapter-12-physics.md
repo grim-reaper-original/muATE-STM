@@ -9,7 +9,7 @@ This chapter explains the physical principles underlying the μATE-STM system. W
 ### 12.1.1 Why Physical Modelling Matters
 
 Mathematics describes *what* a system does; physics explains *why*. For example:
-- **Math:** An RC filter has a transfer function $ H(s) = \frac{1}{1+sRC} $.
+- **Math:** An RC filter has a transfer function \(H(s) = \frac{1}{1+sRC}\).
 - **Physics:** Capacitors store energy in electric fields; resistors dissipate energy as heat. The interplay creates frequency-dependent behavior.
 
 Physical understanding allows engineers to:
@@ -25,7 +25,7 @@ Physical understanding allows engineers to:
 
 **Example:**  
 - **Physics:** Electrons drift in a conductor under an electric field.
-- **Math:** $ I = V/R $ (Ohm's Law).
+- **Math:** \(I = V/R\) (Ohm's Law).
 - **Engineering:** Choose 1% resistors to minimize gain error.
 
 ### 12.1.3 Assumptions and Approximations
@@ -43,15 +43,15 @@ This project uses first-order models to teach core concepts. Higher-order effect
 ### 12.2.1 Electric Charge
 
 **Physical Principle:**  
-Charge ($ Q $, coulombs) is a fundamental property of matter. Electrons carry negative charge ($ -1.6 \times 10^{-19} $ C).
+Charge (\(Q\), coulombs) is a fundamental property of matter. Electrons carry negative charge (\(-1.6 \times 10^{-19}\) C).
 
 **Relevance:**  
-ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage ($ V = Q/C $).
+ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage (\(V = Q/C\)).
 
 ### 12.2.2 Electric Field
 
 **Physical Principle:**  
-A charge creates an electric field ($ \mathbf{E} $, V/m) that exerts force on other charges ($ \mathbf{F} = q\mathbf{E} $).
+A charge creates an electric field (\(\mathbf{E}\), V/m) that exerts force on other charges (\(\mathbf{F} = q\mathbf{E}\)).
 
 **Relevance:**  
 - **Capacitors:** Electric field stores energy between plates.
@@ -60,13 +60,13 @@ A charge creates an electric field ($ \mathbf{E} $, V/m) that exerts force on ot
 ### 12.2.3 Current and Drift Velocity
 
 **Physical Principle:**  
-Current ($ I $, amperes) is the flow of charge. In conductors, electrons drift at slow velocities ($ \sim 1 $ mm/s) but the electric field propagates near light speed.
+Current (\(I\), amperes) is the flow of charge. In conductors, electrons drift at slow velocities (\(\sim 1\) mm/s) but the electric field propagates near light speed.
 
 **Current Density:**
-$
+$$
 \mathbf{J} = \sigma \mathbf{E}
-$
-where $ \sigma $ is conductivity.
+$$
+where \(\sigma\) is conductivity.
 
 **Engineering Implication:**  
 PCB trace width determines current-carrying capacity. For μATE-STM (low current, < 10 mA), standard breadboard wires are sufficient.
@@ -78,7 +78,7 @@ PCB trace width determines current-carrying capacity. For μATE-STM (low current
 ### 12.3.1 Electric Potential
 
 **Physical Principle:**  
-Voltage ($ V $, volts) is electric potential difference. It represents energy per unit charge ($ 1 \text{ V} = 1 \text{ J/C} $).
+Voltage (\(V\), volts) is electric potential difference. It represents energy per unit charge (\(1 \text{ V} = 1 \text{ J/C}\)).
 
 **Reference Node (Ground):**  
 Voltage is always measured *relative* to a reference. In μATE-STM:
@@ -90,7 +90,7 @@ Voltage is always measured *relative* to a reference. In μATE-STM:
 If no reference is shared (e.g., battery-powered STM32 and laptop), communication fails. UART requires common ground.
 
 **Common-Mode vs Differential Voltage:**  
-- **Differential:** Signal of interest ($ V_+ - V_- $).
+- **Differential:** Signal of interest (\(V_+ - V_-\)).
 - **Common-Mode:** Average voltage relative to ground. ADCs reject common-mode noise (within limits).
 
 ***
@@ -100,13 +100,13 @@ If no reference is shared (e.g., battery-powered STM32 and laptop), communicatio
 ### 12.4.1 Microscopic Origin of Resistance
 
 **Physical Principle:**  
-Electrons collide with atoms in the conductor lattice, losing energy as heat. Resistance ($ R $) quantifies this opposition.
+Electrons collide with atoms in the conductor lattice, losing energy as heat. Resistance (\(R\)) quantifies this opposition.
 
 **Ohm's Law (Physical View):**
-$
+$$
 V = I R
-$
-Voltage drives current; resistance dissipates energy ($ P = I^2 R $).
+$$
+Voltage drives current; resistance dissipates energy (\(P = I^2 R\)).
 
 ### 12.4.2 Temperature Dependence
 
@@ -114,7 +114,7 @@ Voltage drives current; resistance dissipates energy ($ P = I^2 R $).
 Higher temperature → more lattice vibrations → more collisions → higher resistance.
 
 **Temperature Coefficient:**  
-For carbon/metal film resistors: $ \alpha \approx 50–100 $ ppm/°C.
+For carbon/metal film resistors: \(\alpha \approx 50–100\) ppm/°C.
 
 **Engineering Implication:**  
 - **Gain Error:** Resistor divider ratio drifts with temperature.
@@ -126,15 +126,15 @@ For carbon/metal film resistors: $ \alpha \approx 50–100 $ ppm/°C.
 Thermal agitation of electrons creates random voltage fluctuations.
 
 **RMS Noise Voltage:**
-$
+$$
 V_{\text{noise,rms}} = \sqrt{4 k_B T R \Delta f}
-$
-where $ k_B $ is Boltzmann's constant, $ T $ is temperature (K), $ \Delta f $ is bandwidth.
+$$
+where \(k_B\) is Boltzmann's constant, \(T\) is temperature (K), \(\Delta f\) is bandwidth.
 
 **Example (1 kΩ, 10 kHz BW, 300 K):**
-$
+$$
 V_{\text{noise}} \approx \sqrt{4 \times 1.38 \times 10^{-23} \times 300 \times 1000 \times 10^4} \approx 400 \text{ nV}
-$
+$$
 
 **Relevance:**  
 Negligible compared to ADC quantization noise (0.8 mV), but important for high-gain amplifiers.
@@ -149,13 +149,13 @@ Negligible compared to ADC quantization noise (0.8 mV), but important for high-g
 A capacitor stores energy in the electric field between two conductive plates separated by a dielectric.
 
 **Capacitance:**
-$
+$$
 C = \frac{\varepsilon A}{d}
-$
-where $ \varepsilon $ is permittivity, $ A $ is area, $ d $ is separation.
+$$
+where \(\varepsilon\) is permittivity, \(A\) is area, \(d\) is separation.
 
 **Charging/Discharging:**  
-Current flows only when voltage changes ($ I = C \frac{dV}{dt} $).
+Current flows only when voltage changes (\(I = C \frac{dV}{dt}\)).
 
 ### 12.5.2 Displacement Current
 
@@ -164,7 +164,7 @@ Changing electric field in the dielectric acts like a current (Maxwell's correct
 
 **Relevance:**  
 - **Decoupling Capacitors:** Provide high-frequency current to ICs, bypassing inductive power traces.
-- **RC Filters:** Capacitor impedance $ Z_C = \frac{1}{j\omega C} $ decreases with frequency, shunting high-frequency noise to ground.
+- **RC Filters:** Capacitor impedance \(Z_C = \frac{1}{j\omega C}\) decreases with frequency, shunting high-frequency noise to ground.
 
 ### 12.5.3 Parasitic Capacitance
 
@@ -183,10 +183,10 @@ Any two conductors separated by an insulator form a capacitor. Breadboard rows h
 
 **Physical Principle:**  
 Current flowing through a conductor creates a magnetic field. Changing current induces voltage (Faraday's Law):
-$
+$$
 V = L \frac{dI}{dt}
-$
-where $ L $ is inductance (henries).
+$$
+where \(L\) is inductance (henries).
 
 **Self-Inductance:**  
 A wire has inductance (~1 nH/mm for breadboard wires).
@@ -218,7 +218,7 @@ Electromagnetic interference (EMI) and radio-frequency interference (RFI) are ex
 2. **Radiated:** Noise couples through air (antenna effect).
 
 **Loop Area:**  
-Induced voltage is proportional to the area of the current loop ($ V \propto \frac{d\Phi}{dt} $).
+Induced voltage is proportional to the area of the current loop (\(V \propto \frac{d\Phi}{dt}\)).
 
 **Mitigation in μATE-STM:**
 - **Small Loops:** Keep analog signal paths short.
@@ -231,7 +231,7 @@ Induced voltage is proportional to the area of the current loop ($ V \propto \fr
 ### 12.8.1 Band Theory
 
 **Physical Principle:**  
-Electrons occupy energy bands: valence band (bound) and conduction band (free). The gap between them is the bandgap ($ E_g $).
+Electrons occupy energy bands: valence band (bound) and conduction band (free). The gap between them is the bandgap (\(E_g\)).
 
 **Semiconductors:**  
 - **Intrinsic:** Pure silicon; few free carriers.
@@ -271,9 +271,9 @@ A switch connects the input to a capacitor for a fixed time (acquisition). The c
 
 **Acquisition Time:**  
 Must be long enough for the capacitor to charge to within ½ LSB of the input voltage.
-$
+$$
 t_{\text{acq}} \geq R_{\text{source}} C_{\text{sample}} \ln(2^N)
-$
+$$
 
 **Engineering Implication:**  
 - **Source Impedance:** High source resistance (e.g., 10 kΩ divider) increases acquisition time.
@@ -283,7 +283,7 @@ $
 
 **Successive Approximation Register (SAR):**
 1. **Sample:** Input voltage stored on capacitor.
-2. **Compare:** Comparator checks if $ V_{\text{in}} > V_{\text{DAC}} $.
+2. **Compare:** Comparator checks if \(V_{\text{in}} > V_{\text{DAC}}\).
 3. **Binary Search:** DAC tries codes from MSB to LSB.
 
 **Physical Limitations:**  
@@ -298,7 +298,7 @@ $
 ### 12.10.1 Resistor-String DAC
 
 **Physical Principle:**  
-A string of equal resistors divides $ V_{\text{REF}} $. Switches select the tap corresponding to the digital code.
+A string of equal resistors divides \(V_{\text{REF}}\). Switches select the tap corresponding to the digital code.
 
 **Advantages:**  
 - Monotonic by design.
@@ -343,11 +343,11 @@ Multiplies reference frequency to higher system clocks (e.g., 8 MHz → 168 MHz)
 Random variation in clock edge timing.
 
 **Impact on ADC:**  
-Jitter causes sampling time uncertainty ($ \Delta t $), leading to voltage error:
-$
+Jitter causes sampling time uncertainty (\(\Delta t\)), leading to voltage error:
+$$
 \Delta V = \frac{dV}{dt} \Delta t
-$
-For high-frequency signals ($ \frac{dV}{dt} $ is large), jitter significantly degrades SNR.
+$$
+For high-frequency signals (\(\frac{dV}{dt}\) is large), jitter significantly degrades SNR.
 
 **Engineering Implication:**  
 - **STM32:** Internal PLL jitter is low enough for 100 kSPS sampling.
@@ -363,13 +363,13 @@ For high-frequency signals ($ \frac{dV}{dt} $ is large), jitter significantly de
 If a signal changes faster than the sampling rate, the samples cannot uniquely represent the frequency.
 
 **Frequency Folding:**  
-Frequencies above $ f_s/2 $ appear as lower frequencies:
-$
+Frequencies above \(f_s/2\) appear as lower frequencies:
+$$
 f_{\text{alias}} = |f_{\text{in}} - k f_s|
-$
+$$
 
 **Anti-Aliasing Filter:**  
-RC low-pass filter attenuates frequencies above $ f_s/2 $ before sampling.
+RC low-pass filter attenuates frequencies above \(f_s/2\) before sampling.
 
 ### 12.12.2 Aperture Uncertainty
 
@@ -400,9 +400,9 @@ White noise (flat power spectral density).
 Discrete nature of charge carriers crossing a potential barrier (e.g., PN junction).
 
 **Magnitude:**  
-$
+$$
 I_{\text{noise,rms}} = \sqrt{2 q I \Delta f}
-$
+$$
 Negligible in low-current CMOS circuits.
 
 ### 12.13.3 Flicker Noise (1/f Noise)
@@ -434,7 +434,7 @@ Approximately white (for busy signals).
 ### 12.14.1 Transmission Lines
 
 **Physical Principle:**  
-At high frequencies, traces behave as transmission lines with characteristic impedance ($ Z_0 $).
+At high frequencies, traces behave as transmission lines with characteristic impedance (\(Z_0\)).
 
 **Reflections:**  
 Impedance mismatch causes reflections (ringing).
@@ -459,22 +459,22 @@ Capacitive/inductive coupling between adjacent traces.
 ### 12.15.1 Energy Storage
 
 **Physical Principle:**  
-- **Capacitor:** Stores energy in electric field ($ E = \frac{1}{2} C V^2 $).
-- **Inductor:** Stores energy in magnetic field ($ E = \frac{1}{2} L I^2 $).
+- **Capacitor:** Stores energy in electric field (\(E = \frac{1}{2} C V^2\)).
+- **Inductor:** Stores energy in magnetic field (\(E = \frac{1}{2} L I^2\)).
 
 **Frequency-Dependent Behavior:**  
 - **Capacitor:** Low impedance at high frequency (shunts noise).
 - **Resistor:** Constant impedance.
 
 **RC Low-Pass Filter:**  
-- **Cutoff:** $ f_c = \frac{1}{2\pi RC} $.
+- **Cutoff:** \(f_c = \frac{1}{2\pi RC}\).
 - **Phase Shift:** Output lags input by up to 90°.
 
 **Transient Response:**  
-Step input causes exponential rise: $ V(t) = V_0 (1 - e^{-t/RC}) $.
+Step input causes exponential rise: \(V(t) = V_0 (1 - e^{-t/RC})\).
 
 **Settling Time:**  
-Time to reach within 1% of final value: $ t_s \approx 5 RC $.
+Time to reach within 1% of final value: \(t_s \approx 5 RC\).
 
 ***
 
@@ -483,13 +483,13 @@ Time to reach within 1% of final value: $ t_s \approx 5 RC $.
 ### 12.16.1 Self-Heating
 
 **Physical Principle:**  
-Power dissipation ($ P = I^2 R $) raises component temperature.
+Power dissipation (\(P = I^2 R\)) raises component temperature.
 
 **Thermal Resistance:**  
-$
+$$
 \Delta T = P \times \theta_{\text{JA}}
-$
-where $ \theta_{\text{JA}} $ is junction-to-ambient thermal resistance.
+$$
+where \(\theta_{\text{JA}}\) is junction-to-ambient thermal resistance.
 
 **Impact:**  
 - **Resistor Drift:** Resistance changes with temperature.
@@ -509,7 +509,7 @@ where $ \theta_{\text{JA}} $ is junction-to-ambient thermal resistance.
 Decoupling capacitors provide local energy storage to supply transient currents.
 
 **Why Needed:**  
-- **Inductive Traces:** Power traces have inductance; rapid current changes cause voltage droop ($ V = L \frac{dI}{dt} $).
+- **Inductive Traces:** Power traces have inductance; rapid current changes cause voltage droop (\(V = L \frac{dI}{dt}\)).
 - **Solution:** Place 100 nF capacitor close to IC power pins.
 
 ### 12.17.2 Ground Bounce
@@ -656,13 +656,13 @@ Chapter 10, TC-030 (Sampling Rate Test).
 
 | Physical Phenomenon | Governing Equation | Engineering Implication | Affected Subsystem | Mitigation Strategy | Related Chapter |
 |---------------------|--------------------|------------------------|--------------------|---------------------|-----------------|
-| **Thermal Noise** | $ V_{\text{rms}} = \sqrt{4 k_B T R \Delta f} $ | Sets noise floor | ADC, AFE | Use low R, limit BW | 8, 11 |
-| **Quantization Noise** | $ \text{SNR} = 6.02 N + 1.76 $ | Limits resolution | ADC, DAC | Oversampling, dithering | 11 |
-| **RC Filtering** | $ f_c = \frac{1}{2\pi RC} $ | Anti-aliasing | AFE | Select R, C for $ f_c < f_s/2 $ | 8, 11 |
-| **Clock Jitter** | $ \Delta V = \frac{dV}{dt} \Delta t $ | Degrades SNR | ADC, Clock | Low-jitter oscillator | 11 |
-| **Ground Bounce** | $ V = L \frac{dI}{dt} $ | Adds noise | ADC, Power | Decoupling, ground plane | 8 |
-| **Aliasing** | $ f_{\text{alias}} = |f_{\text{in}} - k f_s| $ | False frequencies | ADC | Anti-aliasing filter | 11 |
-| **Resistor Drift** | $ \Delta R = R \alpha \Delta T $ | Gain error | AFE, DAC | Low-TC resistors | 8 |
-| **Capacitor Charging** | $ V(t) = V_0 (1 - e^{-t/RC}) $ | Settling time | ADC S/H | Ensure $ t_{\text{acq}} \gg RC $ | 8 |
+| **Thermal Noise** | \(V_{\text{rms}} = \sqrt{4 k_B T R \Delta f}\) | Sets noise floor | ADC, AFE | Use low R, limit BW | 8, 11 |
+| **Quantization Noise** | \(\text{SNR} = 6.02 N + 1.76\) | Limits resolution | ADC, DAC | Oversampling, dithering | 11 |
+| **RC Filtering** | \(f_c = \frac{1}{2\pi RC}\) | Anti-aliasing | AFE | Select R, C for \(f_c < f_s/2\) | 8, 11 |
+| **Clock Jitter** | \(\Delta V = \frac{dV}{dt} \Delta t\) | Degrades SNR | ADC, Clock | Low-jitter oscillator | 11 |
+| **Ground Bounce** | \(V = L \frac{dI}{dt}\) | Adds noise | ADC, Power | Decoupling, ground plane | 8 |
+| **Aliasing** | \(f_{\text{alias}} = |f_{\text{in}} - k f_s|\) | False frequencies | ADC | Anti-aliasing filter | 11 |
+| **Resistor Drift** | \(\Delta R = R \alpha \Delta T\) | Gain error | AFE, DAC | Low-TC resistors | 8 |
+| **Capacitor Charging** | \(V(t) = V_0 (1 - e^{-t/RC})\) | Settling time | ADC S/H | Ensure \(t_{\text{acq}} \gg RC\) | 8 |
 
 ***

@@ -505,13 +505,13 @@ Determine and correct ADC zero-scale offset error.
 
 1. Configure ADC for 12-bit single-channel mode.
 2. Capture N = 1000 samples.
-3. Compute mean code: $ \bar{C}_{\text{zero}} = \frac{1}{N} \sum_{i=1}^{N} C_i $.
+3. Compute mean code: \(\bar{C}_{\text{zero}} = \frac{1}{N} \sum_{i=1}^{N} C_i\).
 4. Ideal zero code = 0.
-5. Offset error (LSB): $ \text{Offset}_{\text{ADC}} = \bar{C}_{\text{zero}} $.
+5. Offset error (LSB): \(\text{Offset}_{\text{ADC}} = \bar{C}_{\text{zero}}\).
 
 **Equation:**
 
-- Corrected code: $ C_{\text{corr}} = C_{\text{raw}} - \text{Offset}_{\text{ADC}} $.
+- Corrected code: \(C_{\text{corr}} = C_{\text{raw}} - \text{Offset}_{\text{ADC}}\).
 
 **Acceptance Limits:**
 
@@ -542,23 +542,23 @@ Determine and correct ADC gain (scale factor) error.
 
 **Setup:**
 
-- Connect ADC input to known voltage $ V_{\text{ref\_actual}} $ (e.g., 3.3 V measured by DMM).
+- Connect ADC input to known voltage \(V_{\text{ref\_actual}}\) (e.g., 3.3 V measured by DMM).
 
 **Procedure:**
 
 1. Capture N = 1000 samples.
-2. Compute mean code: $ \bar{C}_{\text{full}} $.
-3. Ideal full-scale code: $ C_{\text{ideal}} = 4095 $.
-4. Expected code for $ V_{\text{ref\_actual}} $:
-   $
-   C_{\text{expected}} = \frac{V_{\text{ref\_actual}}}{V_{\text{REF\_nominal}}} \times 4095
-   $
-   where $ V_{\text{REF\_nominal}} = 3.3 $ V.
-5. Gain error: $ \text{Gain}_{\text{ADC}} = \frac{C_{\text{expected}}}{\bar{C}_{\text{full}}} $.
+2. Compute mean code: \(\bar{C}_{\text{full}}\).
+3. Ideal full-scale code: \(C_{\text{ideal}} = 4095\).
+4. Expected code for \(V_{\text{ref\_actual}}\):
+$$
+C_{\text{expected}} = \frac{V_{\text{ref\_actual}}}{V_{\text{REF\_nominal}}} \times 4095
+$$
+   where \(V_{\text{REF\_nominal}} = 3.3\) V.
+5. Gain error: \(\text{Gain}_{\text{ADC}} = \frac{C_{\text{expected}}}{\bar{C}_{\text{full}}}\).
 
 **Equation:**
 
-- Corrected code: $ C_{\text{corr}} = (C_{\text{raw}} - \text{Offset}_{\text{ADC}}) \times \text{Gain}_{\text{ADC}} $.
+- Corrected code: \(C_{\text{corr}} = (C_{\text{raw}} - \text{Offset}_{\text{ADC}}) \times \text{Gain}_{\text{ADC}}\).
 
 **Acceptance Limits:**
 
@@ -591,13 +591,13 @@ Determine DAC zero-scale offset.
 
 **Procedure:**
 
-1. Measure output voltage $ V_{\text{out\_zero}} $.
+1. Measure output voltage \(V_{\text{out\_zero}}\).
 2. Ideal = 0 V.
-3. Offset error (V): $ \text{Offset}_{\text{DAC}} = V_{\text{out\_zero}} $.
+3. Offset error (V): \(\text{Offset}_{\text{DAC}} = V_{\text{out\_zero}}\).
 
 **Equation:**
 
-- Corrected voltage: $ V_{\text{corr}} = V_{\text{raw}} - \text{Offset}_{\text{DAC}} $.
+- Corrected voltage: \(V_{\text{corr}} = V_{\text{raw}} - \text{Offset}_{\text{DAC}}\).
 
 **Acceptance Limits:**
 
@@ -620,16 +620,16 @@ Determine DAC gain error.
 
 **Procedure:**
 
-1. Measure output voltage $ V_{\text{out\_full}} $.
-2. Ideal = $ V_{\text{REF\_actual}} $ (e.g., 3.312 V).
-3. Gain error: $ \text{Gain}_{\text{DAC}} = \frac{V_{\text{REF\_actual}}}{V_{\text{out\_full}}} $.
+1. Measure output voltage \(V_{\text{out\_full}}\).
+2. Ideal = \(V_{\text{REF\_actual}}\) (e.g., 3.312 V).
+3. Gain error: \(\text{Gain}_{\text{DAC}} = \frac{V_{\text{REF\_actual}}}{V_{\text{out\_full}}}\).
 
 **Equation:**
 
-- Corrected code for target voltage $ V_{\text{target}} $:
-  $
-  C_{\text{target}} = \frac{V_{\text{target}}}{V_{\text{REF\_actual}} \times \text{Gain}_{\text{DAC}}} \times 4095
-  $
+- Corrected code for target voltage \(V_{\text{target}}\):
+$$
+C_{\text{target}} = \frac{V_{\text{target}}}{V_{\text{REF\_actual}} \times \text{Gain}_{\text{DAC}}} \times 4095
+$$
 
 **Acceptance Limits:**
 
@@ -701,28 +701,28 @@ This section estimates uncertainty contributions from all sources and combines t
 
 #### 10.10.2 Uncertainty Propagation
 
-For voltage measurement $ V = C \times \frac{V_{\text{REF}}}{4095} $:
+For voltage measurement \(V = C \times \frac{V_{\text{REF}}}{4095}\):
 
 - **Combined standard uncertainty:**
-  $
-  u_c(V) = \sqrt{ \left( \frac{\partial V}{\partial C} u(C) \right)^2 + \left( \frac{\partial V}{\partial V_{\text{REF}}} u(V_{\text{REF}}) \right)^2 }
-  $
+$$
+u_c(V) = \sqrt{ \left( \frac{\partial V}{\partial C} u(C) \right)^2 + \left( \frac{\partial V}{\partial V_{\text{REF}}} u(V_{\text{REF}}) \right)^2 }
+$$
 
 **Example Calculation:**
 
-- $ C = 2048 $, $ V_{\text{REF}} = 3.3 $ V.
-- $ u(C) = 0.5 $ LSB (quantization).
-- $ u(V_{\text{REF}}) = 33 $ mV (DMM).
+- \(C = 2048\), \(V_{\text{REF}} = 3.3\) V.
+- \(u(C) = 0.5\) LSB (quantization).
+- \(u(V_{\text{REF}}) = 33\) mV (DMM).
 
-$
+$$
 \frac{\partial V}{\partial C} = \frac{3.3}{4095} \approx 0.806 \text{ mV/LSB}
-$
-$
+$$
+$$
 \frac{\partial V}{\partial V_{\text{REF}}} = \frac{2048}{4095} \approx 0.5
-$
-$
+$$
+$$
 u_c(V) = \sqrt{ (0.806 \times 0.5)^2 + (0.5 \times 33)^2 } \approx \sqrt{ 0.16 + 272 } \approx 16.5 \text{ mV}
-$
+$$
 
 **Dominant term:** VREF uncertainty.
 
@@ -741,9 +741,9 @@ $
 | **Total (RSS)** | — | — | — | — | **±35 mV (worst-case)** |
 
 **RSS (Root Sum Square):**
-$
+$$
 \text{Total} = \sqrt{0.4^2 + 0.4^2 + 33^2 + 2^2 + 0.5^2} \approx 33.2 \text{ mV}
-$
+$$
 
 ***
 
@@ -812,10 +812,10 @@ $
 #### 10.15.3 Confidence Intervals
 
 - **95% Confidence Interval:**
-  $
-  \text{CI} = \bar{x} \pm t_{0.975, n-1} \times \frac{s}{\sqrt{n}}
-  $
-  where $ \bar{x} $ = mean, $ s $ = std dev, $ n $ = 10.
+$$
+\text{CI} = \bar{x} \pm t_{0.975, n-1} \times \frac{s}{\sqrt{n}}
+$$
+  where \(\bar{x}\) = mean, \(s\) = std dev, \(n\) = 10.
 
 ***
 
@@ -823,10 +823,10 @@ $
 
 | Statistic | Formula | Usage |
 |-----------|---------|-------|
-| Mean | $ \bar{x} = \frac{1}{n} \sum x_i $ | Central tendency of metrics |
-| Variance | $ s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 $ | Spread of data |
-| Standard Deviation | $ s = \sqrt{s^2} $ | Repeatability metric |
-| 95% CI | $ \bar{x} \pm 1.96 \frac{s}{\sqrt{n}} $ (large n) | Uncertainty in mean |
+| Mean | \(\bar{x} = \frac{1}{n} \sum x_i\) | Central tendency of metrics |
+| Variance | \(s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2\) | Spread of data |
+| Standard Deviation | \(s = \sqrt{s^2}\) | Repeatability metric |
+| 95% CI | \(\bar{x} \pm 1.96 \frac{s}{\sqrt{n}}\) (large n) | Uncertainty in mean |
 | Outlier Detection | Z-score > 3 or IQR method | Identify anomalous tests |
 | Uncertainty Estimation | RSS of Type A + Type B | Combined measurement uncertainty |
 

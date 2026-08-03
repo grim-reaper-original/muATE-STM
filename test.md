@@ -2,7 +2,7 @@
 
 ## Inline
 
-The transfer function is $H(s)=\frac{1}{1+sRC}$.
+The transfer function is \(H(s)=\frac{1}{1+sRC}\).
 
 ## Display
 
@@ -12,7 +12,7 @@ $$
 
 ## Greek letters
 
-$\sigma = \frac{1}{\rho}$
+\(\sigma = \frac{1}{\rho}\)
 
 ## Matrix
 

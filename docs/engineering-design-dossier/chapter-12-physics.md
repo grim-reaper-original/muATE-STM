@@ -43,15 +43,15 @@ This project uses first-order models to teach core concepts. Higher-order effect
 ### 12.2.1 Electric Charge
 
 **Physical Principle:**  
-Charge (\(Q\), coulombs) is a fundamental property of matter. Electrons carry negative charge (\(-1.6 \times 10^{-19}\) C).
+Charge, denoted by **Q**, is measured in coulombs and is a fundamental property of matter. Electrons carry negative charge (\(-1.6 \times 10^{-19}\) C).
 
 **Relevance:**  
-ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage (\(V = Q/C\)).
+ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage according to \(V = Q/C\).
 
 ### 12.2.2 Electric Field
 
 **Physical Principle:**  
-A charge creates an electric field (\(\mathbf{E}\), V/m) that exerts force on other charges (\(\mathbf{F} = q\mathbf{E}\)).
+A charge creates an electric field **E** in V/m that exerts force on other charges, as described by \(\mathbf{F} = q\mathbf{E}\).
 
 **Relevance:**  
 - **Capacitors:** Electric field stores energy between plates.
@@ -60,7 +60,7 @@ A charge creates an electric field (\(\mathbf{E}\), V/m) that exerts force on ot
 ### 12.2.3 Current and Drift Velocity
 
 **Physical Principle:**  
-Current (\(I\), amperes) is the flow of charge. In conductors, electrons drift at slow velocities (\(\sim 1\) mm/s) but the electric field propagates near light speed.
+Current, denoted by **I** (amperes), is the flow of charge. In conductors, electrons drift at slow velocities (\(\sim 1\) mm/s) but the electric field propagates near light speed.
 
 **Current Density:**
 $$
@@ -78,7 +78,7 @@ PCB trace width determines current-carrying capacity. For μATE-STM (low current
 ### 12.3.1 Electric Potential
 
 **Physical Principle:**  
-Voltage (\(V\), volts) is electric potential difference. It represents energy per unit charge (\(1 \text{ V} = 1 \text{ J/C}\)).
+Voltage **V** (volts) is electric potential difference. It represents energy per unit charge (\(1 \text{ V} = 1 \text{ J/C}\)).
 
 **Reference Node (Ground):**  
 Voltage is always measured *relative* to a reference. In μATE-STM:
@@ -100,13 +100,13 @@ If no reference is shared (e.g., battery-powered STM32 and laptop), communicatio
 ### 12.4.1 Microscopic Origin of Resistance
 
 **Physical Principle:**  
-Electrons collide with atoms in the conductor lattice, losing energy as heat. Resistance (\(R\)) quantifies this opposition.
+Electrons collide with atoms in the conductor lattice, losing energy as heat. Resistance **R** quantifies this opposition.
 
 **Ohm's Law (Physical View):**
 $$
 V = I R
 $$
-Voltage drives current; resistance dissipates energy (\(P = I^2 R\)).
+Voltage drives current, while resistance dissipates energy according to \(P = I^2 R\).
 
 ### 12.4.2 Temperature Dependence
 

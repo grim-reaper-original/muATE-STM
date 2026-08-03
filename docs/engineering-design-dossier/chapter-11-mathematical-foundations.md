@@ -892,7 +892,7 @@ $$
 H(s) = \frac{V_{\text{out}}(s)}{V_{\text{in}}(s)} = \frac{1}{1 + sRC}
 $$
 
-**Cutoff Frequency (\(f_c\)):**
+**Cutoff Frequency** (\(f_c\)):
 $$
 f_c = \frac{1}{2\pi RC}
 $$

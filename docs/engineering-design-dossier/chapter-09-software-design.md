@@ -1396,14 +1396,14 @@ Similar to firmware receiver but implemented in Python:
 **Mathematical Basis:**
 
 - **Ramp:**
-  $$
+  $
   y[n] = \left\lfloor \frac{n}{N} \cdot 4095 \right\rfloor
-  $$
-  where $$ N $$ = waveform period in samples.
+  $
+  where $ N $ = waveform period in samples.
 - **Sine:**
-  $$
+  $
   y[n] = 2048 + 2047 \cdot \sin\left( \frac{2\pi n}{N} \right)
-  $$
+  $
 
 **Implementation:**
 
@@ -1478,17 +1478,17 @@ hist, bin_edges = np.histogram(samples, bins=4096, range=(0, 4096))
 
 **Mathematical Basis:**
 
-$$
+$
 \text{DNL}(k) = \frac{N_k}{N_{\text{ideal}}} - 1
-$$
+$
 
-where $$ N_k $$ = count for code $$ k $$, $$ N_{\text{ideal}} = \frac{\text{total samples}}{4096} $$.
+where $ N_k $ = count for code $ k $, $ N_{\text{ideal}} = \frac{\text{total samples}}{4096} $.
 
 **Algorithm:**
 
-1. Compute $$ N_{\text{ideal}} $$.
-2. For each code $$ k $$:
-   - $$ \text{DNL}(k) = (N_k / N_{\text{ideal}}) - 1 $$.
+1. Compute $ N_{\text{ideal}} $.
+2. For each code $ k $:
+   - $ \text{DNL}(k) = (N_k / N_{\text{ideal}}) - 1 $.
 
 **Complexity:** O(4096) = O(1).
 
@@ -1498,7 +1498,7 @@ where $$ N_k $$ = count for code $$ k $$, $$ N_{\text{ideal}} = \frac{\text{tota
 
 **Edge Cases:**
 
-- $$ N_{\text{ideal}} = 0 $$ → skip.
+- $ N_{\text{ideal}} = 0 $ → skip.
 
 ***
 
@@ -1506,9 +1506,9 @@ where $$ N_k $$ = count for code $$ k $$, $$ N_{\text{ideal}} = \frac{\text{tota
 
 **Mathematical Basis:**
 
-$$
+$
 \text{INL}(m) = \sum_{i=1}^{m-1} \text{DNL}(i)
-$$
+$
 
 **Algorithm:**
 
@@ -1551,11 +1551,11 @@ magnitudes = np.abs(spectrum)
 
 **Mathematical Basis:**
 
-$$
+$
 \text{THD} = \frac{\sqrt{\sum_{n=2}^{H} V_n^2}}{V_1}
-$$
+$
 
-where $$ V_1 $$ = fundamental magnitude, $$ V_n $$ = harmonic magnitudes.
+where $ V_1 $ = fundamental magnitude, $ V_n $ = harmonic magnitudes.
 
 **Algorithm:**
 
@@ -1572,11 +1572,11 @@ where $$ V_1 $$ = fundamental magnitude, $$ V_n $$ = harmonic magnitudes.
 
 **Mathematical Basis:**
 
-$$
+$
 \text{SNR} = 20 \cdot \log_{10}\left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
-$$
+$
 
-where $$ P_{\text{signal}} $$ = power in fundamental bin, $$ P_{\text{noise}} $$ = power in all other bins (excluding harmonics).
+where $ P_{\text{signal}} $ = power in fundamental bin, $ P_{\text{noise}} $ = power in all other bins (excluding harmonics).
 
 **Algorithm:**
 

@@ -249,7 +249,7 @@ Documentation is a deliverable, not an afterthought:
 - **Reliability:** Probability of functioning without failure over time.
 - **MTBF (Mean Time Between Failures):** Expected time between failures.
 - **MTTR (Mean Time To Repair):** Expected time to repair.
-- **Availability:** $$ A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} $$.
+- **Availability:** $ A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}} $.
 
 ### 16.5.2 MTBF Estimation
 
@@ -265,9 +265,9 @@ For μATE-STM (educational instrument, low stress):
 
 ### 16.5.4 Availability
 
-$$
+$
 A = \frac{50,000}{50,000 + 3} \approx 99.994\%
-$$
+$
 
 **Interpretation:** High availability; downtime is minimal.
 
@@ -280,12 +280,12 @@ $$
 
 ### 16.5.6 Failure Probability
 
-**Exponential Distribution:** $$ P(t) = 1 - e^{-\lambda t} $$, where $$ \lambda = 1/\text{MTBF} $$.
+**Exponential Distribution:** $ P(t) = 1 - e^{-\lambda t} $, where $ \lambda = 1/\text{MTBF} $.
 
 **Example:** Probability of failure in 1 year (8,760 hours):
-$$
+$
 P(8760) = 1 - e^{-8760/50000} \approx 16\%
-$$
+$
 
 ### 16.5.7 Reliability Growth
 

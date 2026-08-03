@@ -666,3 +666,28 @@ Chapter 10, TC-030 (Sampling Rate Test).
 | **Capacitor Charging** | \(V(t) = V_0 (1 - e^{-t/RC})\) | Settling time | ADC S/H | Ensure \(t_{\text{acq}} \gg RC\) | 8 |
 
 ***
+
+# GitHub Math Test
+
+## Inline
+
+The transfer function is \(H(s)=\frac{1}{1+sRC}\).
+
+## Display
+
+$$
+H(s)=\frac{1}{1+sRC}
+$$
+
+## Greek letters
+
+\(\sigma = \frac{1}{\rho}\)
+
+## Matrix
+
+$$
+\begin{bmatrix}
+1 & 2\\
+3 & 4
+\end{bmatrix}
+$$

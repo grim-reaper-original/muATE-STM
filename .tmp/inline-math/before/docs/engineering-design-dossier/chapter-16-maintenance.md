@@ -249,7 +249,7 @@ Documentation is a deliverable, not an afterthought:
 - **Reliability:** Probability of functioning without failure over time.
 - **MTBF (Mean Time Between Failures):** Expected time between failures.
 - **MTTR (Mean Time To Repair):** Expected time to repair.
-- **Availability:** $A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}$.
+- **Availability:** \(A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}\).
 
 ### 16.5.2 MTBF Estimation
 
@@ -280,7 +280,7 @@ $$
 
 ### 16.5.6 Failure Probability
 
-**Exponential Distribution:** $P(t) = 1 - e^{-\lambda t}$, where $\lambda = 1/\text{MTBF}$.
+**Exponential Distribution:** \(P(t) = 1 - e^{-\lambda t}\), where \(\lambda = 1/\text{MTBF}\).
 
 **Example:** Probability of failure in 1 year (8,760 hours):
 $$

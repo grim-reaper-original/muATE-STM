@@ -984,7 +984,7 @@ $$
 
 **Example:**
 
-- ADC clock = 36 MHz → $T_{\text{clk}} = 27.78$ ns.
+- ADC clock = 36 MHz → \(T_{\text{clk}} = 27.78\) ns.
 - Sample time = 15 cycles.
 - Conversion cycles = 15 + 12 = 27 cycles.
 - Conversion time:
@@ -1025,7 +1025,7 @@ This yields a 100 kSPS DAC update rate with ample CPU headroom.
 $$
 f_{\text{signal}} = \frac{M}{N} f_s
 $$
-    where $M$ is integer cycles, $N$ is FFT size, $f_s$ is sampling rate.
+    where \(M\) is integer cycles, \(N\) is FFT size, \(f_s\) is sampling rate.
 - Timer prescalers and auto-reload registers chosen to hit desired rates within integer constraints.
 
 #### 6.8.4 DMA Timing
@@ -1119,9 +1119,9 @@ This leaves ~30 kB for stack, heap, and other variables, which is acceptable but
 $$
 f_{\text{max}} = \frac{f_s}{2}
 $$
-  - For $f_s = 200$ kSPS → $f_{\text{max}} = 100$ kHz.
+  - For \(f_s = 200\) kSPS → \(f_{\text{max}} = 100\) kHz.
 - Anti-aliasing:
-  - AFE should include low-pass filter with cutoff < $f_s/2$.
+  - AFE should include low-pass filter with cutoff < \(f_s/2\).
 
 #### 6.8.9 Clock Tree Assumptions
 

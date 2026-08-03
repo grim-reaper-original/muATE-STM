@@ -1,0 +1,1183 @@
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-06-system-architecture.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-06-system-architecture.md"
+index b373c71..fe7daa9 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-06-system-architecture.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-06-system-architecture.md"
+@@ -984,7 +984,7 @@ $$
+ 
+ **Example:**
+ 
+-- ADC clock = 36 MHz → \(T_{\text{clk}} = 27.78\) ns.
++- ADC clock = 36 MHz → $T_{\text{clk}} = 27.78$ ns.
+ - Sample time = 15 cycles.
+ - Conversion cycles = 15 + 12 = 27 cycles.
+ - Conversion time:
+@@ -1025,7 +1025,7 @@ This yields a 100 kSPS DAC update rate with ample CPU headroom.
+ $$
+ f_{\text{signal}} = \frac{M}{N} f_s
+ $$
+-    where \(M\) is integer cycles, \(N\) is FFT size, \(f_s\) is sampling rate.
++    where $M$ is integer cycles, $N$ is FFT size, $f_s$ is sampling rate.
+ - Timer prescalers and auto-reload registers chosen to hit desired rates within integer constraints.
+ 
+ #### 6.8.4 DMA Timing
+@@ -1119,9 +1119,9 @@ This leaves ~30 kB for stack, heap, and other variables, which is acceptable but
+ $$
+ f_{\text{max}} = \frac{f_s}{2}
+ $$
+-  - For \(f_s = 200\) kSPS → \(f_{\text{max}} = 100\) kHz.
++  - For $f_s = 200$ kSPS → $f_{\text{max}} = 100$ kHz.
+ - Anti-aliasing:
+-  - AFE should include low-pass filter with cutoff < \(f_s/2\).
++  - AFE should include low-pass filter with cutoff < $f_s/2$.
+ 
+ #### 6.8.9 Clock Tree Assumptions
+ 
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-09-software-design.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-09-software-design.md"
+index adba459..4b795a9 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-09-software-design.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-09-software-design.md"
+@@ -1399,7 +1399,7 @@ Similar to firmware receiver but implemented in Python:
+ $$
+ y[n] = \left\lfloor \frac{n}{N} \cdot 4095 \right\rfloor
+ $$
+-  where \(N\) = waveform period in samples.
++  where $N$ = waveform period in samples.
+ - **Sine:**
+ $$
+ y[n] = 2048 + 2047 \cdot \sin\left( \frac{2\pi n}{N} \right)
+@@ -1482,13 +1482,13 @@ $$
+ \text{DNL}(k) = \frac{N_k}{N_{\text{ideal}}} - 1
+ $$
+ 
+-where \(N_k\) = count for code \(k\), \(N_{\text{ideal}} = \frac{\text{total samples}}{4096}\).
++where $N_k$ = count for code $k$, $N_{\text{ideal}} = \frac{\text{total samples}}{4096}$.
+ 
+ **Algorithm:**
+ 
+-1. Compute \(N_{\text{ideal}}\).
+-2. For each code \(k\):
+-   - \(\text{DNL}(k) = (N_k / N_{\text{ideal}}) - 1\).
++1. Compute $N_{\text{ideal}}$.
++2. For each code $k$:
++   - $\text{DNL}(k) = (N_k / N_{\text{ideal}}) - 1$.
+ 
+ **Complexity:** O(4096) = O(1).
+ 
+@@ -1498,7 +1498,7 @@ where \(N_k\) = count for code \(k\), \(N_{\text{ideal}} = \frac{\text{total sam
+ 
+ **Edge Cases:**
+ 
+-- \(N_{\text{ideal}} = 0\) → skip.
++- $N_{\text{ideal}} = 0$ → skip.
+ 
+ ***
+ 
+@@ -1555,7 +1555,7 @@ $$
+ \text{THD} = \frac{\sqrt{\sum_{n=2}^{H} V_n^2}}{V_1}
+ $$
+ 
+-where \(V_1\) = fundamental magnitude, \(V_n\) = harmonic magnitudes.
++where $V_1$ = fundamental magnitude, $V_n$ = harmonic magnitudes.
+ 
+ **Algorithm:**
+ 
+@@ -1576,7 +1576,7 @@ $$
+ \text{SNR} = 20 \cdot \log_{10}\left( \frac{P_{\text{signal}}}{P_{\text{noise}}} \right)
+ $$
+ 
+-where \(P_{\text{signal}}\) = power in fundamental bin, \(P_{\text{noise}}\) = power in all other bins (excluding harmonics).
++where $P_{\text{signal}}$ = power in fundamental bin, $P_{\text{noise}}$ = power in all other bins (excluding harmonics).
+ 
+ **Algorithm:**
+ 
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-10-verification-validation.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-10-verification-validation.md"
+index 85279cf..b790ca3 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-10-verification-validation.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-10-verification-validation.md"
+@@ -505,13 +505,13 @@ Determine and correct ADC zero-scale offset error.
+ 
+ 1. Configure ADC for 12-bit single-channel mode.
+ 2. Capture N = 1000 samples.
+-3. Compute mean code: \(\bar{C}_{\text{zero}} = \frac{1}{N} \sum_{i=1}^{N} C_i\).
++3. Compute mean code: $\bar{C}_{\text{zero}} = \frac{1}{N} \sum_{i=1}^{N} C_i$.
+ 4. Ideal zero code = 0.
+-5. Offset error (LSB): \(\text{Offset}_{\text{ADC}} = \bar{C}_{\text{zero}}\).
++5. Offset error (LSB): $\text{Offset}_{\text{ADC}} = \bar{C}_{\text{zero}}$.
+ 
+ **Equation:**
+ 
+-- Corrected code: \(C_{\text{corr}} = C_{\text{raw}} - \text{Offset}_{\text{ADC}}\).
++- Corrected code: $C_{\text{corr}} = C_{\text{raw}} - \text{Offset}_{\text{ADC}}$.
+ 
+ **Acceptance Limits:**
+ 
+@@ -542,23 +542,23 @@ Determine and correct ADC gain (scale factor) error.
+ 
+ **Setup:**
+ 
+-- Connect ADC input to known voltage \(V_{\text{ref\_actual}}\) (e.g., 3.3 V measured by DMM).
++- Connect ADC input to known voltage $V_{\text{ref\_actual}}$ (e.g., 3.3 V measured by DMM).
+ 
+ **Procedure:**
+ 
+ 1. Capture N = 1000 samples.
+-2. Compute mean code: \(\bar{C}_{\text{full}}\).
+-3. Ideal full-scale code: \(C_{\text{ideal}} = 4095\).
+-4. Expected code for \(V_{\text{ref\_actual}}\):
++2. Compute mean code: $\bar{C}_{\text{full}}$.
++3. Ideal full-scale code: $C_{\text{ideal}} = 4095$.
++4. Expected code for $V_{\text{ref\_actual}}$:
+ $$
+ C_{\text{expected}} = \frac{V_{\text{ref\_actual}}}{V_{\text{REF\_nominal}}} \times 4095
+ $$
+-   where \(V_{\text{REF\_nominal}} = 3.3\) V.
+-5. Gain error: \(\text{Gain}_{\text{ADC}} = \frac{C_{\text{expected}}}{\bar{C}_{\text{full}}}\).
++   where $V_{\text{REF\_nominal}} = 3.3$ V.
++5. Gain error: $\text{Gain}_{\text{ADC}} = \frac{C_{\text{expected}}}{\bar{C}_{\text{full}}}$.
+ 
+ **Equation:**
+ 
+-- Corrected code: \(C_{\text{corr}} = (C_{\text{raw}} - \text{Offset}_{\text{ADC}}) \times \text{Gain}_{\text{ADC}}\).
++- Corrected code: $C_{\text{corr}} = (C_{\text{raw}} - \text{Offset}_{\text{ADC}}) \times \text{Gain}_{\text{ADC}}$.
+ 
+ **Acceptance Limits:**
+ 
+@@ -591,13 +591,13 @@ Determine DAC zero-scale offset.
+ 
+ **Procedure:**
+ 
+-1. Measure output voltage \(V_{\text{out\_zero}}\).
++1. Measure output voltage $V_{\text{out\_zero}}$.
+ 2. Ideal = 0 V.
+-3. Offset error (V): \(\text{Offset}_{\text{DAC}} = V_{\text{out\_zero}}\).
++3. Offset error (V): $\text{Offset}_{\text{DAC}} = V_{\text{out\_zero}}$.
+ 
+ **Equation:**
+ 
+-- Corrected voltage: \(V_{\text{corr}} = V_{\text{raw}} - \text{Offset}_{\text{DAC}}\).
++- Corrected voltage: $V_{\text{corr}} = V_{\text{raw}} - \text{Offset}_{\text{DAC}}$.
+ 
+ **Acceptance Limits:**
+ 
+@@ -620,13 +620,13 @@ Determine DAC gain error.
+ 
+ **Procedure:**
+ 
+-1. Measure output voltage \(V_{\text{out\_full}}\).
+-2. Ideal = \(V_{\text{REF\_actual}}\) (e.g., 3.312 V).
+-3. Gain error: \(\text{Gain}_{\text{DAC}} = \frac{V_{\text{REF\_actual}}}{V_{\text{out\_full}}}\).
++1. Measure output voltage $V_{\text{out\_full}}$.
++2. Ideal = $V_{\text{REF\_actual}}$ (e.g., 3.312 V).
++3. Gain error: $\text{Gain}_{\text{DAC}} = \frac{V_{\text{REF\_actual}}}{V_{\text{out\_full}}}$.
+ 
+ **Equation:**
+ 
+-- Corrected code for target voltage \(V_{\text{target}}\):
++- Corrected code for target voltage $V_{\text{target}}$:
+ $$
+ C_{\text{target}} = \frac{V_{\text{target}}}{V_{\text{REF\_actual}} \times \text{Gain}_{\text{DAC}}} \times 4095
+ $$
+@@ -701,7 +701,7 @@ This section estimates uncertainty contributions from all sources and combines t
+ 
+ #### 10.10.2 Uncertainty Propagation
+ 
+-For voltage measurement \(V = C \times \frac{V_{\text{REF}}}{4095}\):
++For voltage measurement $V = C \times \frac{V_{\text{REF}}}{4095}$:
+ 
+ - **Combined standard uncertainty:**
+ $$
+@@ -710,9 +710,9 @@ $$
+ 
+ **Example Calculation:**
+ 
+-- \(C = 2048\), \(V_{\text{REF}} = 3.3\) V.
+-- \(u(C) = 0.5\) LSB (quantization).
+-- \(u(V_{\text{REF}}) = 33\) mV (DMM).
++- $C = 2048$, $V_{\text{REF}} = 3.3$ V.
++- $u(C) = 0.5$ LSB (quantization).
++- $u(V_{\text{REF}}) = 33$ mV (DMM).
+ 
+ $$
+ \frac{\partial V}{\partial C} = \frac{3.3}{4095} \approx 0.806 \text{ mV/LSB}
+@@ -815,7 +815,7 @@ $$
+ $$
+ \text{CI} = \bar{x} \pm t_{0.975, n-1} \times \frac{s}{\sqrt{n}}
+ $$
+-  where \(\bar{x}\) = mean, \(s\) = std dev, \(n\) = 10.
++  where $\bar{x}$ = mean, $s$ = std dev, $n$ = 10.
+ 
+ ***
+ 
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-11-mathematical-foundations.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-11-mathematical-foundations.md"
+index 3a012f2..e454dfe 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-11-mathematical-foundations.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-11-mathematical-foundations.md"
+@@ -121,7 +121,7 @@ Relates analog input voltage to digital output code.
+ 
+ **Derivation:**
+ 
+-An N-bit ADC divides the full-scale voltage range \(V_{\text{FS}}\) into \(2^N\) discrete levels.
++An N-bit ADC divides the full-scale voltage range $V_{\text{FS}}$ into $2^N$ discrete levels.
+ 
+ **Ideal Transfer Function:**
+ 
+@@ -131,20 +131,20 @@ $$
+ 
+ **Variables:**
+ 
+-- \(C\): Digital output code (integer, 0 to \(2^N - 1\)).
+-- \(V_{\text{in}}\): Analog input voltage (V).
+-- \(V_{\text{REF}}\): Reference voltage (V), typically 3.3 V.
+-- \(N\): ADC resolution (bits), \(N = 12\) for STM32.
+-- \(\lfloor \cdot \rfloor\): Floor function (round down to nearest integer).
++- $C$: Digital output code (integer, 0 to $2^N - 1$).
++- $V_{\text{in}}$: Analog input voltage (V).
++- $V_{\text{REF}}$: Reference voltage (V), typically 3.3 V.
++- $N$: ADC resolution (bits), $N = 12$ for STM32.
++- $\lfloor \cdot \rfloor$: Floor function (round down to nearest integer).
+ 
+ **Assumptions:**
+ 
+ - Ideal ADC (no offset, gain, or linearity errors).
+-- Input range: \(0 \leq V_{\text{in}} \leq V_{\text{REF}}\).
++- Input range: $0 \leq V_{\text{in}} \leq V_{\text{REF}}$.
+ 
+ **Physical Meaning:**
+ 
+-- Each code represents a voltage range of \(\frac{V_{\text{REF}}}{2^N - 1}\).
++- Each code represents a voltage range of $\frac{V_{\text{REF}}}{2^N - 1}$.
+ 
+ **Engineering Significance:**
+ 
+@@ -153,8 +153,8 @@ $$
+ 
+ **Numerical Example:**
+ 
+-- \(V_{\text{REF}} = 3.3\) V, \(N = 12\), \(V_{\text{in}} = 1.65\) V.
+-- \(C = \left\lfloor \frac{1.65}{3.3} \times 4095 \right\rfloor = \left\lfloor 0.5 \times 4095 \right\rfloor = 2047\).
++- $V_{\text{REF}} = 3.3$ V, $N = 12$, $V_{\text{in}} = 1.65$ V.
++- $C = \left\lfloor \frac{1.65}{3.3} \times 4095 \right\rfloor = \left\lfloor 0.5 \times 4095 \right\rfloor = 2047$.
+ 
+ **Implementation (Host Python):**
+ 
+@@ -175,8 +175,8 @@ $$
+ 
+ **Variables:**
+ 
+-- \(V_{\text{out}}\): Reconstructed voltage (V).
+-- \(C\): ADC code (0–4095).
++- $V_{\text{out}}$: Reconstructed voltage (V).
++- $C$: ADC code (0–4095).
+ 
+ **Usage:**
+ 
+@@ -234,7 +234,7 @@ $$
+ 
+ **Distribution:**
+ 
+-- Uniform distribution over \([-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]\).
++- Uniform distribution over $[-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]$.
+ 
+ **Usage:**
+ 
+@@ -258,8 +258,8 @@ $$
+ 
+ **Variables:**
+ 
+-- \(C\): DAC code (0–4095).
+-- \(V_{\text{out}}\): Output voltage (V).
++- $C$: DAC code (0–4095).
++- $V_{\text{out}}$: Output voltage (V).
+ 
+ **Physical Meaning:**
+ 
+@@ -276,16 +276,16 @@ $$
+ 
+ **Offset Error:**
+ 
+-- Output voltage when \(C = 0\).
++- Output voltage when $C = 0$.
+ - Ideal: 0 V.
+-- Measured: \(V_{\text{offset}}\).
++- Measured: $V_{\text{offset}}$.
+ 
+ **Gain Error:**
+ 
+ - Deviation of actual full-scale output from ideal.
+-- Ideal: \(V_{\text{REF}}\) at \(C = 4095\).
+-- Measured: \(V_{\text{full}}\).
+-- Gain error: \(\frac{V_{\text{REF}}}{V_{\text{full}}}\).
++- Ideal: $V_{\text{REF}}$ at $C = 4095$.
++- Measured: $V_{\text{full}}$.
++- Gain error: $\frac{V_{\text{REF}}}{V_{\text{full}}}$.
+ 
+ **Usage:**
+ 
+@@ -300,17 +300,17 @@ $$
+ 
+ **Definition:**
+ 
+-- Quantization levels equally spaced by \(V_{\text{LSB}}\).
++- Quantization levels equally spaced by $V_{\text{LSB}}$.
+ 
+ **Rounding:**
+ 
+ - Code assigned to nearest level.
+-- Error: \(\epsilon \in [-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]\).
++- Error: $\epsilon \in [-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]$.
+ 
+ **Truncation:**
+ 
+ - Code assigned to lower level (floor).
+-- Error: \(\epsilon \in [0, V_{\text{LSB}}]\).
++- Error: $\epsilon \in [0, V_{\text{LSB}}]$.
+ 
+ **STM32 ADC:**
+ 
+@@ -332,7 +332,7 @@ $$
+ 
+ **Derivation:**
+ 
+-- For uniform distribution over \([-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]\):
++- For uniform distribution over $[-\frac{V_{\text{LSB}}}{2}, +\frac{V_{\text{LSB}}}{2}]$:
+ $$
+ \sigma^2 = \frac{(b - a)^2}{12} = \frac{V_{\text{LSB}}^2}{12}
+ $$
+@@ -345,8 +345,8 @@ $$
+ 
+ **For STM32:**
+ 
+-- \(V_{\text{LSB}} = 0.806\) mV.
+-- \(V_{\text{noise,rms}} = \frac{0.806}{\sqrt{12}} \approx 0.233\) mV.
++- $V_{\text{LSB}} = 0.806$ mV.
++- $V_{\text{noise,rms}} = \frac{0.806}{\sqrt{12}} \approx 0.233$ mV.
+ 
+ ***
+ 
+@@ -354,8 +354,8 @@ $$
+ 
+ **For Full-Scale Sine Wave:**
+ 
+-- Signal amplitude: \(A = \frac{V_{\text{REF}}}{2}\).
+-- Signal power: \(P_{\text{signal}} = \frac{A^2}{2} = \frac{V_{\text{REF}}^2}{8}\).
++- Signal amplitude: $A = \frac{V_{\text{REF}}}{2}$.
++- Signal power: $P_{\text{signal}} = \frac{A^2}{2} = \frac{V_{\text{REF}}^2}{8}$.
+ 
+ **SNR (dB):**
+ 
+@@ -382,7 +382,7 @@ $$
+ 
+ **Statement:**
+ 
+-A continuous-time signal with maximum frequency \(f_{\text{max}}\) can be perfectly reconstructed from its samples if the sampling frequency \(f_s\) satisfies:
++A continuous-time signal with maximum frequency $f_{\text{max}}$ can be perfectly reconstructed from its samples if the sampling frequency $f_s$ satisfies:
+ 
+ $$
+ f_s > 2 f_{\text{max}}
+@@ -390,7 +390,7 @@ $$
+ 
+ **Derivation (Intuitive):**
+ 
+-- A sine wave of frequency \(f\) requires at least 2 samples per cycle to be uniquely identified.
++- A sine wave of frequency $f$ requires at least 2 samples per cycle to be uniquely identified.
+ - Fewer samples → aliasing (higher frequencies appear as lower frequencies).
+ 
+ **Nyquist Frequency:**
+@@ -410,7 +410,7 @@ $$
+ 
+ **Definition:**
+ 
+-- Phenomenon where frequencies above \(f_{\text{Nyquist}}\) appear as lower frequencies.
++- Phenomenon where frequencies above $f_{\text{Nyquist}}$ appear as lower frequencies.
+ 
+ **Aliased Frequency:**
+ 
+@@ -418,16 +418,16 @@ $$
+ f_{\text{alias}} = |f_{\text{in}} - k f_s|
+ $$
+ 
+-where \(k\) is integer such that \(f_{\text{alias}} \in [0, f_{\text{Nyquist}}]\).
++where $k$ is integer such that $f_{\text{alias}} \in [0, f_{\text{Nyquist}}]$.
+ 
+ **Example:**
+ 
+-- \(f_s = 100\) kSPS, \(f_{\text{in}} = 60\) kHz.
+-- \(f_{\text{alias}} = |60 - 100| = 40\) kHz.
++- $f_s = 100$ kSPS, $f_{\text{in}} = 60$ kHz.
++- $f_{\text{alias}} = |60 - 100| = 40$ kHz.
+ 
+ **Mitigation:**
+ 
+-- Anti-aliasing filter (RC low-pass) with cutoff < \(f_{\text{Nyquist}}\).
++- Anti-aliasing filter (RC low-pass) with cutoff < $f_{\text{Nyquist}}$.
+ 
+ ***
+ 
+@@ -435,12 +435,12 @@ where \(k\) is integer such that \(f_{\text{alias}} \in [0, f_{\text{Nyquist}}]\
+ 
+ **Oversampling:**
+ 
+-- \(f_s \gg 2 f_{\text{max}}\).
++- $f_s \gg 2 f_{\text{max}}$.
+ - Benefits: Reduced quantization noise in band of interest, easier filtering.
+ 
+ **Undersampling:**
+ 
+-- \(f_s < 2 f_{\text{max}}\) (intentional for bandpass signals).
++- $f_s < 2 f_{\text{max}}$ (intentional for bandpass signals).
+ - Not used in this project.
+ 
+ ***
+@@ -451,12 +451,12 @@ where \(k\) is integer such that \(f_{\text{alias}} \in [0, f_{\text{Nyquist}}]\
+ 
+ **Definitions:**
+ 
+-- Sampling period: \(T_s = \frac{1}{f_s}\).
+-- Sampling frequency: \(f_s\).
++- Sampling period: $T_s = \frac{1}{f_s}$.
++- Sampling frequency: $f_s$.
+ 
+ **Example:**
+ 
+-- \(f_s = 100\) kSPS → \(T_s = 10\) µs.
++- $f_s = 100$ kSPS → $T_s = 10$ µs.
+ 
+ ***
+ 
+@@ -470,14 +470,14 @@ $$
+ 
+ **Variables:**
+ 
+-- \(f_{\text{timer}}\): Timer clock frequency (e.g., 84 MHz for APB1).
++- $f_{\text{timer}}$: Timer clock frequency (e.g., 84 MHz for APB1).
+ - PSC: Prescaler (integer, 0 to 65535).
+ - ARR: Auto-reload value (integer, 0 to 65535).
+ 
+ **Example (DAC Sine at 100 kSPS):**
+ 
+-- \(f_{\text{timer}} = 84\) MHz.
+-- Desired \(f_{\text{update}} = 100\) kSPS.
++- $f_{\text{timer}} = 84$ MHz.
++- Desired $f_{\text{update}} = 100$ kSPS.
+ - Choose PSC = 0 (no prescaling).
+ - Solve for ARR:
+ $$
+@@ -495,15 +495,15 @@ $$
+ 
+ **STM32 ADC:**
+ 
+-- Conversion time: \(T_{\text{conv}} = T_{\text{sample}} + 12\) cycles (for 12-bit).
+-- ADC clock: \(f_{\text{ADC}} \leq 36\) MHz.
++- Conversion time: $T_{\text{conv}} = T_{\text{sample}} + 12$ cycles (for 12-bit).
++- ADC clock: $f_{\text{ADC}} \leq 36$ MHz.
+ 
+ **Example:**
+ 
+-- \(f_{\text{ADC}} = 36\) MHz → \(T_{\text{clk}} = 27.78\) ns.
++- $f_{\text{ADC}} = 36$ MHz → $T_{\text{clk}} = 27.78$ ns.
+ - Sample time = 15 cycles.
+-- \(T_{\text{conv}} = (15 + 12) \times 27.78 \text{ ns} \approx 750 \text{ ns}\).
+-- Maximum sampling rate: \(f_s = \frac{1}{T_{\text{conv}}} \approx 1.33\) MSPS.
++- $T_{\text{conv}} = (15 + 12) \times 27.78 \text{ ns} \approx 750 \text{ ns}$.
++- Maximum sampling rate: $f_s = \frac{1}{T_{\text{conv}}} \approx 1.33$ MSPS.
+ 
+ **Usage:**
+ 
+@@ -524,12 +524,12 @@ where DIV is integer divider.
+ **Throughput:**
+ 
+ - 10 bits per byte (1 start, 8 data, 1 stop).
+-- Effective throughput: \(\frac{\text{Baud}}{10}\) bytes/s.
++- Effective throughput: $\frac{\text{Baud}}{10}$ bytes/s.
+ 
+ **Example (921,600 baud):**
+ 
+-- Throughput: \(\frac{921,600}{10} = 92,160\) bytes/s.
+-- 16-bit samples: \(\frac{92,160}{2} = 46,080\) samples/s.
++- Throughput: $\frac{921,600}{10} = 92,160$ bytes/s.
++- 16-bit samples: $\frac{92,160}{2} = 46,080$ samples/s.
+ 
+ ***
+ 
+@@ -538,7 +538,7 @@ where DIV is integer divider.
+ #### 11.8.1 Probability Density Function (PDF)
+ 
+ **Purpose:**  
+-The Probability Density Function (PDF), \(p(x)\), describes the likelihood of a continuous random variable \(x\) taking a specific value. For a voltage signal \(v(t)\), the PDF indicates how much time the signal spends at each voltage level.
++The Probability Density Function (PDF), $p(x)$, describes the likelihood of a continuous random variable $x$ taking a specific value. For a voltage signal $v(t)$, the PDF indicates how much time the signal spends at each voltage level.
+ 
+ **Normalization Condition:**
+ $$
+@@ -546,7 +546,7 @@ $$
+ $$
+ 
+ **Probability in Interval:**
+-The probability that \(v(t)\) lies between \(V_1\) and \(V_2\) is:
++The probability that $v(t)$ lies between $V_1$ and $V_2$ is:
+ $$
+ P(V_1 \le v \le V_2) = \int_{V_1}^{V_2} p(v) \, dv
+ $$
+@@ -559,17 +559,17 @@ In ADC testing, we use a known input signal (e.g., a ramp) with a known PDF to c
+ #### 11.8.2 Code Density Testing
+ 
+ **Principle:**  
+-Apply an input signal that sweeps the entire ADC input range uniformly. Count the number of occurrences (hits) for each output code \(k\).
++Apply an input signal that sweeps the entire ADC input range uniformly. Count the number of occurrences (hits) for each output code $k$.
+ 
+ **Ideal Input:**  
+-A linear ramp signal \(v(t) = \alpha t\) has a uniform PDF:
++A linear ramp signal $v(t) = \alpha t$ has a uniform PDF:
+ $$
+ p(v) = \begin{cases} \frac{1}{V_{\text{FS}}} & 0 \le v \le V_{\text{FS}} \\ 0 & \text{otherwise} \end{cases}
+ $$
+-where \(V_{\text{FS}}\) is the full-scale voltage range.
++where $V_{\text{FS}}$ is the full-scale voltage range.
+ 
+ **Histogram Formation:**  
+-For an \(N\)-bit ADC, there are \(2^N\) possible codes. Let \(H[k]\) be the number of times code \(k\) is observed out of \(M\) total samples.
++For an $N$-bit ADC, there are $2^N$ possible codes. Let $H[k]$ be the number of times code $k$ is observed out of $M$ total samples.
+ 
+ **Ideal Histogram:**  
+ For a uniform input, the expected count for every code is:
+@@ -581,36 +581,36 @@ $$
+ If the ADC has non-uniform code widths (non-linearity), codes corresponding to wider voltage ranges will have higher counts, and vice versa.
+ 
+ **Missing Codes:**  
+-If \(H[k] = 0\) for a code \(k\) that should exist, it is a "missing code," indicating a severe non-linearity where the code width is effectively zero.
++If $H[k] = 0$ for a code $k$ that should exist, it is a "missing code," indicating a severe non-linearity where the code width is effectively zero.
+ 
+ ***
+ 
+ #### 11.8.3 Transition Levels and Code Widths
+ 
+-**Transition Levels (\(T_k\)):**  
+-The input voltage at which the ADC output transitions from code \(k-1\) to code \(k\).
+-- \(T_1\): Transition from 0 to 1.
+-- \(T_{2^N-1}\): Transition from \(2^N-2\) to \(2^N-1\).
++**Transition Levels ($T_k$):**  
++The input voltage at which the ADC output transitions from code $k-1$ to code $k$.
++- $T_1$: Transition from 0 to 1.
++- $T_{2^N-1}$: Transition from $2^N-2$ to $2^N-1$.
+ 
+-**Code Width (\(W_k\)):**  
+-The voltage range corresponding to code \(k\):
++**Code Width ($W_k$):**  
++The voltage range corresponding to code $k$:
+ $$
+ W_k = T_{k+1} - T_k
+ $$
+-For an ideal ADC, \(W_k = 1 \text{ LSB}\) for all \(k\).
++For an ideal ADC, $W_k = 1 \text{ LSB}$ for all $k$.
+ 
+ **Relation to Histogram:**  
+-The histogram count \(H[k]\) is proportional to the code width \(W_k\):
++The histogram count $H[k]$ is proportional to the code width $W_k$:
+ $$
+ H[k] \propto W_k
+ $$
+-Specifically, for a uniform input slope \(\frac{dv}{dt}\) and sampling rate \(f_s\):
++Specifically, for a uniform input slope $\frac{dv}{dt}$ and sampling rate $f_s$:
+ $$
+ H[k] \approx \frac{W_k}{\text{slope}} \times f_s
+ $$
+ 
+ **Implementation (Host Software):**  
+-The `compute_histogram` function in `signal_processing.py` (Chapter 9) builds the array \(H[k]\) from raw ADC samples. This array is the primary input for DNL/INL calculations.
++The `compute_histogram` function in `signal_processing.py` (Chapter 9) builds the array $H[k]$ from raw ADC samples. This array is the primary input for DNL/INL calculations.
+ 
+ ***
+ 
+@@ -627,11 +627,11 @@ W_{\text{ideal}} = 1 \text{ LSB} = \frac{V_{\text{REF}}}{2^N - 1}
+ $$
+ 
+ **Actual Code Width (Normalized):**  
+-Using the histogram method, the normalized code width for code \(k\) is estimated as:
++Using the histogram method, the normalized code width for code $k$ is estimated as:
+ $$
+ \hat{W}_k = \frac{H[k]}{H_{\text{avg}}}
+ $$
+-where \(H_{\text{avg}} = \frac{1}{2^N - 2} \sum_{k=1}^{2^N-2} H[k]\) is the average hit count (excluding first and last codes which are often distorted).
++where $H_{\text{avg}} = \frac{1}{2^N - 2} \sum_{k=1}^{2^N-2} H[k]$ is the average hit count (excluding first and last codes which are often distorted).
+ 
+ **DNL Equation:**
+ $$
+@@ -639,32 +639,32 @@ $$
+ $$
+ 
+ **Variables:**
+-- \(H[k]\): Histogram count for code \(k\).
+-- \(H_{\text{avg}}\): Average histogram count.
+-- \(k\): Code index (typically \(1 \le k \le 2^N-2\)).
++- $H[k]$: Histogram count for code $k$.
++- $H_{\text{avg}}$: Average histogram count.
++- $k$: Code index (typically $1 \le k \le 2^N-2$).
+ 
+ **Interpretation:**
+-- \(\text{DNL}[k] = 0\): Ideal code width.
+-- \(\text{DNL}[k] > 0\): Code is wider than ideal (ADC spends more time in this state).
+-- \(\text{DNL}[k] < 0\): Code is narrower than ideal.
+-- \(\text{DNL}[k] = -1\): **Missing Code** (width is zero).
++- $\text{DNL}[k] = 0$: Ideal code width.
++- $\text{DNL}[k] > 0$: Code is wider than ideal (ADC spends more time in this state).
++- $\text{DNL}[k] < 0$: Code is narrower than ideal.
++- $\text{DNL}[k] = -1$: **Missing Code** (width is zero).
+ 
+ **Monotonicity:**  
+-An ADC is monotonic if \(T_{k+1} > T_k\) for all \(k\). This requires \(\text{DNL}[k] > -1\) for all \(k\). If \(\text{DNL} \le -1\), the ADC is non-monotonic (output decreases for increasing input).
++An ADC is monotonic if $T_{k+1} > T_k$ for all $k$. This requires $\text{DNL}[k] > -1$ for all $k$. If $\text{DNL} \le -1$, the ADC is non-monotonic (output decreases for increasing input).
+ 
+ ***
+ 
+ #### 11.9.2 Numerical Example
+ 
+ **Setup:**
+-- 12-bit ADC, \(M = 10,000\) samples.
+-- Ideal average count: \(H_{\text{avg}} = \frac{10000}{4096} \approx 2.44\).
+-- Suppose for code \(k=1000\), observed count \(H[1000] = 4\).
+-- Suppose for code \(k=1001\), observed count \(H[1001] = 1\).
++- 12-bit ADC, $M = 10,000$ samples.
++- Ideal average count: $H_{\text{avg}} = \frac{10000}{4096} \approx 2.44$.
++- Suppose for code $k=1000$, observed count $H[1000] = 4$.
++- Suppose for code $k=1001$, observed count $H[1001] = 1$.
+ 
+ **Calculation:**
+-- \(\text{DNL}[1000] = \frac{4}{2.44} - 1 \approx 1.64 - 1 = +0.64 \text{ LSB}\).
+-- \(\text{DNL}[1001] = \frac{1}{2.44} - 1 \approx 0.41 - 1 = -0.59 \text{ LSB}\).
++- $\text{DNL}[1000] = \frac{4}{2.44} - 1 \approx 1.64 - 1 = +0.64 \text{ LSB}$.
++- $\text{DNL}[1001] = \frac{1}{2.44} - 1 \approx 0.41 - 1 = -0.59 \text{ LSB}$.
+ 
+ **Interpretation:**  
+ Code 1000 is 64% wider than ideal; Code 1001 is 59% narrower.
+@@ -674,13 +674,13 @@ Code 1000 is 64% wider than ideal; Code 1001 is 59% narrower.
+ #### 11.9.3 Implementation in Software
+ 
+ **Algorithm (`adc_analysis.py`):**
+-1. Compute histogram \(H\).
+-2. Calculate \(H_{\text{avg}}\) (excluding endpoints).
+-3. Compute \(\text{DNL}[k] = (H[k] / H_{\text{avg}}) - 1\).
++1. Compute histogram $H$.
++2. Calculate $H_{\text{avg}}$ (excluding endpoints).
++3. Compute $\text{DNL}[k] = (H[k] / H_{\text{avg}}) - 1$.
+ 4. Filter out endpoints (codes 0 and 4095).
+ 
+ **Numerical Stability:**  
+-- Ensure \(H_{\text{avg}} > 0\) (sufficient samples).
++- Ensure $H_{\text{avg}} > 0$ (sufficient samples).
+ - Use floating-point division to avoid integer truncation.
+ 
+ ***
+@@ -693,11 +693,11 @@ Code 1000 is 64% wider than ideal; Code 1001 is 59% narrower.
+ INL measures the cumulative deviation of transition points from their ideal positions. It represents the "shape" of the transfer curve.
+ 
+ **Endpoint Method:**  
+-INL at code \(k\) is the sum of DNL errors from code 1 up to \(k-1\):
++INL at code $k$ is the sum of DNL errors from code 1 up to $k-1$:
+ $$
+ \text{INL}[k] = \sum_{i=1}^{k-1} \text{DNL}[i]
+ $$
+-Boundary conditions: \(\text{INL} = 0\), \(\text{INL}[2^N-1] = 0\) (forced by definition). [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
++Boundary conditions: $\text{INL} = 0$, $\text{INL}[2^N-1] = 0$ (forced by definition). [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
+ 
+ **Physical Interpretation:**  
+ INL represents the vertical distance between the actual transfer curve and the straight line connecting the first and last transition points.
+@@ -710,15 +710,15 @@ Instead of fixing endpoints, a straight line is fitted to the transfer curve (e.
+ #### 11.10.2 Numerical Example
+ 
+ **Given DNL:**
+-- \(\text{DNL} = 0.1\) [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
+-- \(\text{DNL} = -0.2\) [analog](https://www.analog.com/media/en/training-seminars/design-handbooks/Data-Conversion-Handbook/Chapter5.pdf)
+-- \(\text{DNL} = 0.5\) [ersaelectronics](https://www.ersaelectronics.com/blog/adc-inl-dnl-missing-codes)
++- $\text{DNL} = 0.1$ [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
++- $\text{DNL} = -0.2$ [analog](https://www.analog.com/media/en/training-seminars/design-handbooks/Data-Conversion-Handbook/Chapter5.pdf)
++- $\text{DNL} = 0.5$ [ersaelectronics](https://www.ersaelectronics.com/blog/adc-inl-dnl-missing-codes)
+ 
+ **INL Calculation:**
+-- \(\text{INL} = 0\) [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
+-- \(\text{INL} = \text{DNL} = 0.1\) [analog](https://www.analog.com/media/en/training-seminars/design-handbooks/Data-Conversion-Handbook/Chapter5.pdf)
+-- \(\text{INL} = \text{DNL} + \text{DNL} = 0.1 - 0.2 = -0.1\) [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
+-- \(\text{INL} = 0.1 - 0.2 + 0.5 = 0.4\) [archive.nptel.ac](https://archive.nptel.ac.in/content/syllabus_pdf/106103016.pdf)
++- $\text{INL} = 0$ [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
++- $\text{INL} = \text{DNL} = 0.1$ [analog](https://www.analog.com/media/en/training-seminars/design-handbooks/Data-Conversion-Handbook/Chapter5.pdf)
++- $\text{INL} = \text{DNL} + \text{DNL} = 0.1 - 0.2 = -0.1$ [study.iitm.ac](https://study.iitm.ac.in/es/course_pages/EE4108.html)
++- $\text{INL} = 0.1 - 0.2 + 0.5 = 0.4$ [archive.nptel.ac](https://archive.nptel.ac.in/content/syllabus_pdf/106103016.pdf)
+ 
+ **Implementation:**  
+ `compute_inl(dnl)` in `adc_analysis.py` performs a cumulative sum (`numpy.cumsum`) of the DNL array.
+@@ -730,33 +730,33 @@ Instead of fixing endpoints, a straight line is fitted to the transfer curve (e.
+ #### 11.11.1 From Fourier Series to DFT
+ 
+ **Fourier Series:**  
+-Any periodic signal \(x(t)\) with period \(T\) can be represented as a sum of sinusoids:
++Any periodic signal $x(t)$ with period $T$ can be represented as a sum of sinusoids:
+ $$
+ x(t) = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos(2\pi n f_0 t) + b_n \sin(2\pi n f_0 t) \right)
+ $$
+-where \(f_0 = 1/T\).
++where $f_0 = 1/T$.
+ 
+ **Discrete Fourier Transform (DFT):**  
+-For a discrete sequence \(x[n]\) of length \(N\):
++For a discrete sequence $x[n]$ of length $N$:
+ $$
+ X[k] = \sum_{n=0}^{N-1} x[n] e^{-j 2\pi k n / N}, \quad k = 0, \dots, N-1
+ $$
+ 
+ **Variables:**
+-- \(x[n]\): Input sample at index \(n\).
+-- \(X[k]\): Complex spectral component at bin \(k\).
+-- \(N\): Number of samples (FFT size).
+-- \(k\): Frequency bin index.
++- $x[n]$: Input sample at index $n$.
++- $X[k]$: Complex spectral component at bin $k$.
++- $N$: Number of samples (FFT size).
++- $k$: Frequency bin index.
+ 
+ **Frequency Resolution:**  
+-The frequency corresponding to bin \(k\) is:
++The frequency corresponding to bin $k$ is:
+ $$
+ f_k = k \cdot \frac{f_s}{N}
+ $$
+-where \(f_s\) is the sampling frequency.
++where $f_s$ is the sampling frequency.
+ 
+ **Nyquist Limit:**  
+-Valid frequencies are up to \(k = N/2\) (Nyquist frequency \(f_s/2\)).
++Valid frequencies are up to $k = N/2$ (Nyquist frequency $f_s/2$).
+ 
+ ***
+ 
+@@ -766,13 +766,13 @@ Valid frequencies are up to \(k = N/2\) (Nyquist frequency \(f_s/2\)).
+ The FFT is an efficient algorithm to compute the DFT.
+ 
+ **Complexity:**
+-- DFT: \(O(N^2)\).
+-- FFT (Radix-2): \(O(N \log_2 N)\).
++- DFT: $O(N^2)$.
++- FFT (Radix-2): $O(N \log_2 N)$.
+ 
+ **Example:**  
+-For \(N = 10,000\):
+-- DFT operations \(\approx 10^8\).
+-- FFT operations \(\approx 1.3 \times 10^5\).
++For $N = 10,000$:
++- DFT operations $\approx 10^8$.
++- FFT operations $\approx 1.3 \times 10^5$.
+ - **Speedup:** ~770x.
+ 
+ **Implementation:**  
+@@ -785,10 +785,10 @@ For \(N = 10,000\):
+ #### 11.12.1 Spectral Leakage
+ 
+ **Problem:**  
+-The DFT assumes the input signal is periodic with period \(N\). If the signal is not exactly periodic in the window (non-coherent sampling), discontinuities occur at the edges, causing energy to "leak" into adjacent frequency bins.
++The DFT assumes the input signal is periodic with period $N$. If the signal is not exactly periodic in the window (non-coherent sampling), discontinuities occur at the edges, causing energy to "leak" into adjacent frequency bins.
+ 
+ **Solution:**  
+-Multiply the input signal \(x[n]\) by a window function \(w[n]\) that tapers to zero at the edges.
++Multiply the input signal $x[n]$ by a window function $w[n]$ that tapers to zero at the edges.
+ 
+ **Windowed Signal:**
+ $$
+@@ -832,13 +832,13 @@ $$
+ $$
+ 
+ **Variables:**
+-- \(V_1\): RMS amplitude of fundamental frequency (bin \(k_1\)).
+-- \(V_h\): RMS amplitude of \(h\)-th harmonic.
+-- \(H\): Number of harmonics considered (typically 5–10).
++- $V_1$: RMS amplitude of fundamental frequency (bin $k_1$).
++- $V_h$: RMS amplitude of $h$-th harmonic.
++- $H$: Number of harmonics considered (typically 5–10).
+ 
+ **Implementation:**  
+-1. Identify fundamental bin \(k_1\) (max magnitude).
+-2. Identify harmonic bins \(k_h = h \cdot k_1\).
++1. Identify fundamental bin $k_1$ (max magnitude).
++2. Identify harmonic bins $k_h = h \cdot k_1$.
+ 3. Sum squares of harmonic magnitudes.
+ 4. Compute ratio.
+ 
+@@ -873,7 +873,7 @@ $$
+ $$
+ 
+ **Derivation:**  
+-From quantization noise SNR formula \(\text{SNR} = 6.02 N + 1.76\), solve for \(N\).
++From quantization noise SNR formula $\text{SNR} = 6.02 N + 1.76$, solve for $N$.
+ 
+ **Usage:**  
+ Key metric for ADC performance characterization in Chapter 10.
+@@ -885,14 +885,14 @@ Key metric for ADC performance characterization in Chapter 10.
+ #### 11.14.1 Transfer Function
+ 
+ **Circuit:**  
+-Series resistor \(R\), shunt capacitor \(C\).
++Series resistor $R$, shunt capacitor $C$.
+ 
+-**Transfer Function \(H(s)\):**
++**Transfer Function $H(s)$:**
+ $$
+ H(s) = \frac{V_{\text{out}}(s)}{V_{\text{in}}(s)} = \frac{1}{1 + sRC}
+ $$
+ 
+-**Cutoff Frequency** (\(f_c\)):
++**Cutoff Frequency** ($f_c$):
+ $$
+ f_c = \frac{1}{2\pi RC}
+ $$
+@@ -908,11 +908,11 @@ $$
+ $$
+ 
+ **Example (Chapter 8 Values):**  
+-- \(R = 1 \text{ k}\Omega\), \(C = 100 \text{ nF}\).
+-- \(f_c = \frac{1}{2\pi \cdot 1000 \cdot 100 \times 10^{-9}} \approx 1.59 \text{ kHz}\).
++- $R = 1 \text{ k}\Omega$, $C = 100 \text{ nF}$.
++- $f_c = \frac{1}{2\pi \cdot 1000 \cdot 100 \times 10^{-9}} \approx 1.59 \text{ kHz}$.
+ 
+ **Relevance:**  
+-This filter acts as an anti-aliasing filter for the ADC, attenuating frequencies above \(f_c\).
++This filter acts as an anti-aliasing filter for the ADC, attenuating frequencies above $f_c$.
+ 
+ ***
+ 
+@@ -945,14 +945,14 @@ Calibration (Chapter 10) uses these to quantify offset and gain errors.
+ #### 11.16.1 Uncertainty Propagation
+ 
+ **Law of Propagation of Uncertainty:**  
+-If \(y = f(x_1, x_2, \dots)\), the combined standard uncertainty \(u_c(y)\) is:
++If $y = f(x_1, x_2, \dots)$, the combined standard uncertainty $u_c(y)$ is:
+ $$
+ u_c(y) = \sqrt{ \sum_{i} \left( \frac{\partial f}{\partial x_i} u(x_i) \right)^2 }
+ $$
+ (Assuming uncorrelated inputs).
+ 
+ **Example (Voltage Measurement):**  
+-\(V = C \cdot \frac{V_{\text{REF}}}{4095}\).
++$V = C \cdot \frac{V_{\text{REF}}}{4095}$.
+ $$
+ u_c(V) = \sqrt{ \left( \frac{V_{\text{REF}}}{4095} u(C) \right)^2 + \left( \frac{C}{4095} u(V_{\text{REF}}) \right)^2 }
+ $$
+@@ -961,7 +961,7 @@ $$
+ $$
+ U = k \cdot u_c(y)
+ $$
+-where \(k\) is the coverage factor (typically \(k=2\) for 95% confidence).
++where $k$ is the coverage factor (typically $k=2$ for 95% confidence).
+ 
+ ***
+ 
+@@ -1011,11 +1011,11 @@ Ensures host software can process 50k samples in < 1 second (SR-011).
+ Python uses 64-bit floats (53 bits mantissa). Precision is ~15 decimal digits.
+ 
+ **Catastrophic Cancellation:**  
+-Occurs when subtracting nearly equal numbers (e.g., \(\text{INL}\) calculation if DNL is small).
++Occurs when subtracting nearly equal numbers (e.g., $\text{INL}$ calculation if DNL is small).
+ - **Mitigation:** Use compensated summation (Kahan summation) if necessary (not critical for 12-bit data).
+ 
+ **Overflow/Underflow:**  
+-- FFT magnitudes can be large; normalize by \(N\).
++- FFT magnitudes can be large; normalize by $N$.
+ - Squaring large numbers can overflow; use log-sum-exp tricks if needed (not critical here).
+ 
+ ***
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-12-physics.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-12-physics.md"
+index 34d285c..f224e81 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-12-physics.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-12-physics.md"
+@@ -9,7 +9,7 @@ This chapter explains the physical principles underlying the μATE-STM system. W
+ ### 12.1.1 Why Physical Modelling Matters
+ 
+ Mathematics describes *what* a system does; physics explains *why*. For example:
+-- **Math:** An RC filter has a transfer function \(H(s) = \frac{1}{1+sRC}\).
++- **Math:** An RC filter has a transfer function $H(s) = \frac{1}{1+sRC}$.
+ - **Physics:** Capacitors store energy in electric fields; resistors dissipate energy as heat. The interplay creates frequency-dependent behavior.
+ 
+ Physical understanding allows engineers to:
+@@ -25,7 +25,7 @@ Physical understanding allows engineers to:
+ 
+ **Example:**  
+ - **Physics:** Electrons drift in a conductor under an electric field.
+-- **Math:** \(I = V/R\) (Ohm's Law).
++- **Math:** $I = V/R$ (Ohm's Law).
+ - **Engineering:** Choose 1% resistors to minimize gain error.
+ 
+ ### 12.1.3 Assumptions and Approximations
+@@ -43,15 +43,15 @@ This project uses first-order models to teach core concepts. Higher-order effect
+ ### 12.2.1 Electric Charge
+ 
+ **Physical Principle:**  
+-Charge, denoted by **Q**, is measured in coulombs and is a fundamental property of matter. Electrons carry negative charge (\(-1.6 \times 10^{-19}\) C).
++Charge, denoted by **Q**, is measured in coulombs and is a fundamental property of matter. Electrons carry negative charge ($-1.6 \times 10^{-19}$ C).
+ 
+ **Relevance:**  
+-ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage according to \(V = Q/C\).
++ADC/DAC operation involves moving charge onto/off capacitors. The amount of charge determines the voltage according to $V = Q/C$.
+ 
+ ### 12.2.2 Electric Field
+ 
+ **Physical Principle:**  
+-A charge creates an electric field **E** in V/m that exerts force on other charges, as described by \(\mathbf{F} = q\mathbf{E}\).
++A charge creates an electric field **E** in V/m that exerts force on other charges, as described by $\mathbf{F} = q\mathbf{E}$.
+ 
+ **Relevance:**  
+ - **Capacitors:** Electric field stores energy between plates.
+@@ -60,13 +60,13 @@ A charge creates an electric field **E** in V/m that exerts force on other charg
+ ### 12.2.3 Current and Drift Velocity
+ 
+ **Physical Principle:**  
+-Current, denoted by **I** (amperes), is the flow of charge. In conductors, electrons drift at slow velocities (\(\sim 1\) mm/s) but the electric field propagates near light speed.
++Current, denoted by **I** (amperes), is the flow of charge. In conductors, electrons drift at slow velocities ($\sim 1$ mm/s) but the electric field propagates near light speed.
+ 
+ **Current Density:**
+ $$
+ \mathbf{J} = \sigma \mathbf{E}
+ $$
+-where \(\sigma\) is conductivity.
++where $\sigma$ is conductivity.
+ 
+ **Engineering Implication:**  
+ PCB trace width determines current-carrying capacity. For μATE-STM (low current, < 10 mA), standard breadboard wires are sufficient.
+@@ -78,7 +78,7 @@ PCB trace width determines current-carrying capacity. For μATE-STM (low current
+ ### 12.3.1 Electric Potential
+ 
+ **Physical Principle:**  
+-Voltage **V** (volts) is electric potential difference. It represents energy per unit charge (\(1 \text{ V} = 1 \text{ J/C}\)).
++Voltage **V** (volts) is electric potential difference. It represents energy per unit charge ($1 \text{ V} = 1 \text{ J/C}$).
+ 
+ **Reference Node (Ground):**  
+ Voltage is always measured *relative* to a reference. In μATE-STM:
+@@ -90,7 +90,7 @@ Voltage is always measured *relative* to a reference. In μATE-STM:
+ If no reference is shared (e.g., battery-powered STM32 and laptop), communication fails. UART requires common ground.
+ 
+ **Common-Mode vs Differential Voltage:**  
+-- **Differential:** Signal of interest (\(V_+ - V_-\)).
++- **Differential:** Signal of interest ($V_+ - V_-$).
+ - **Common-Mode:** Average voltage relative to ground. ADCs reject common-mode noise (within limits).
+ 
+ ***
+@@ -106,7 +106,7 @@ Electrons collide with atoms in the conductor lattice, losing energy as heat. Re
+ $$
+ V = I R
+ $$
+-Voltage drives current, while resistance dissipates energy according to \(P = I^2 R\).
++Voltage drives current, while resistance dissipates energy according to $P = I^2 R$.
+ 
+ ### 12.4.2 Temperature Dependence
+ 
+@@ -114,7 +114,7 @@ Voltage drives current, while resistance dissipates energy according to \(P = I^
+ Higher temperature → more lattice vibrations → more collisions → higher resistance.
+ 
+ **Temperature Coefficient:**  
+-For carbon/metal film resistors: \(\alpha \approx 50–100\) ppm/°C.
++For carbon/metal film resistors: $\alpha \approx 50–100$ ppm/°C.
+ 
+ **Engineering Implication:**  
+ - **Gain Error:** Resistor divider ratio drifts with temperature.
+@@ -129,7 +129,7 @@ Thermal agitation of electrons creates random voltage fluctuations.
+ $$
+ V_{\text{noise,rms}} = \sqrt{4 k_B T R \Delta f}
+ $$
+-where \(k_B\) is Boltzmann's constant, \(T\) is temperature (K), \(\Delta f\) is bandwidth.
++where $k_B$ is Boltzmann's constant, $T$ is temperature (K), $\Delta f$ is bandwidth.
+ 
+ **Example (1 kΩ, 10 kHz BW, 300 K):**
+ $$
+@@ -152,10 +152,10 @@ A capacitor stores energy in the electric field between two conductive plates se
+ $$
+ C = \frac{\varepsilon A}{d}
+ $$
+-where \(\varepsilon\) is permittivity, \(A\) is area, \(d\) is separation.
++where $\varepsilon$ is permittivity, $A$ is area, $d$ is separation.
+ 
+ **Charging/Discharging:**  
+-Current flows only when voltage changes (\(I = C \frac{dV}{dt}\)).
++Current flows only when voltage changes ($I = C \frac{dV}{dt}$).
+ 
+ ### 12.5.2 Displacement Current
+ 
+@@ -164,7 +164,7 @@ Changing electric field in the dielectric acts like a current (Maxwell's correct
+ 
+ **Relevance:**  
+ - **Decoupling Capacitors:** Provide high-frequency current to ICs, bypassing inductive power traces.
+-- **RC Filters:** Capacitor impedance \(Z_C = \frac{1}{j\omega C}\) decreases with frequency, shunting high-frequency noise to ground.
++- **RC Filters:** Capacitor impedance $Z_C = \frac{1}{j\omega C}$ decreases with frequency, shunting high-frequency noise to ground.
+ 
+ ### 12.5.3 Parasitic Capacitance
+ 
+@@ -186,7 +186,7 @@ Current flowing through a conductor creates a magnetic field. Changing current i
+ $$
+ V = L \frac{dI}{dt}
+ $$
+-where \(L\) is inductance (henries).
++where $L$ is inductance (henries).
+ 
+ **Self-Inductance:**  
+ A wire has inductance (~1 nH/mm for breadboard wires).
+@@ -218,7 +218,7 @@ Electromagnetic interference (EMI) and radio-frequency interference (RFI) are ex
+ 2. **Radiated:** Noise couples through air (antenna effect).
+ 
+ **Loop Area:**  
+-Induced voltage is proportional to the area of the current loop (\(V \propto \frac{d\Phi}{dt}\)).
++Induced voltage is proportional to the area of the current loop ($V \propto \frac{d\Phi}{dt}$).
+ 
+ **Mitigation in μATE-STM:**
+ - **Small Loops:** Keep analog signal paths short.
+@@ -231,7 +231,7 @@ Induced voltage is proportional to the area of the current loop (\(V \propto \fr
+ ### 12.8.1 Band Theory
+ 
+ **Physical Principle:**  
+-Electrons occupy energy bands: valence band (bound) and conduction band (free). The gap between them is the bandgap (\(E_g\)).
++Electrons occupy energy bands: valence band (bound) and conduction band (free). The gap between them is the bandgap ($E_g$).
+ 
+ **Semiconductors:**  
+ - **Intrinsic:** Pure silicon; few free carriers.
+@@ -283,7 +283,7 @@ $$
+ 
+ **Successive Approximation Register (SAR):**
+ 1. **Sample:** Input voltage stored on capacitor.
+-2. **Compare:** Comparator checks if \(V_{\text{in}} > V_{\text{DAC}}\).
++2. **Compare:** Comparator checks if $V_{\text{in}} > V_{\text{DAC}}$.
+ 3. **Binary Search:** DAC tries codes from MSB to LSB.
+ 
+ **Physical Limitations:**  
+@@ -298,7 +298,7 @@ $$
+ ### 12.10.1 Resistor-String DAC
+ 
+ **Physical Principle:**  
+-A string of equal resistors divides \(V_{\text{REF}}\). Switches select the tap corresponding to the digital code.
++A string of equal resistors divides $V_{\text{REF}}$. Switches select the tap corresponding to the digital code.
+ 
+ **Advantages:**  
+ - Monotonic by design.
+@@ -343,11 +343,11 @@ Multiplies reference frequency to higher system clocks (e.g., 8 MHz → 168 MHz)
+ Random variation in clock edge timing.
+ 
+ **Impact on ADC:**  
+-Jitter causes sampling time uncertainty (\(\Delta t\)), leading to voltage error:
++Jitter causes sampling time uncertainty ($\Delta t$), leading to voltage error:
+ $$
+ \Delta V = \frac{dV}{dt} \Delta t
+ $$
+-For high-frequency signals (\(\frac{dV}{dt}\) is large), jitter significantly degrades SNR.
++For high-frequency signals ($\frac{dV}{dt}$ is large), jitter significantly degrades SNR.
+ 
+ **Engineering Implication:**  
+ - **STM32:** Internal PLL jitter is low enough for 100 kSPS sampling.
+@@ -363,13 +363,13 @@ For high-frequency signals (\(\frac{dV}{dt}\) is large), jitter significantly de
+ If a signal changes faster than the sampling rate, the samples cannot uniquely represent the frequency.
+ 
+ **Frequency Folding:**  
+-Frequencies above \(f_s/2\) appear as lower frequencies:
++Frequencies above $f_s/2$ appear as lower frequencies:
+ $$
+ f_{\text{alias}} = |f_{\text{in}} - k f_s|
+ $$
+ 
+ **Anti-Aliasing Filter:**  
+-RC low-pass filter attenuates frequencies above \(f_s/2\) before sampling.
++RC low-pass filter attenuates frequencies above $f_s/2$ before sampling.
+ 
+ ### 12.12.2 Aperture Uncertainty
+ 
+@@ -434,7 +434,7 @@ Approximately white (for busy signals).
+ ### 12.14.1 Transmission Lines
+ 
+ **Physical Principle:**  
+-At high frequencies, traces behave as transmission lines with characteristic impedance (\(Z_0\)).
++At high frequencies, traces behave as transmission lines with characteristic impedance ($Z_0$).
+ 
+ **Reflections:**  
+ Impedance mismatch causes reflections (ringing).
+@@ -459,22 +459,22 @@ Capacitive/inductive coupling between adjacent traces.
+ ### 12.15.1 Energy Storage
+ 
+ **Physical Principle:**  
+-- **Capacitor:** Stores energy in electric field (\(E = \frac{1}{2} C V^2\)).
+-- **Inductor:** Stores energy in magnetic field (\(E = \frac{1}{2} L I^2\)).
++- **Capacitor:** Stores energy in electric field ($E = \frac{1}{2} C V^2$).
++- **Inductor:** Stores energy in magnetic field ($E = \frac{1}{2} L I^2$).
+ 
+ **Frequency-Dependent Behavior:**  
+ - **Capacitor:** Low impedance at high frequency (shunts noise).
+ - **Resistor:** Constant impedance.
+ 
+ **RC Low-Pass Filter:**  
+-- **Cutoff:** \(f_c = \frac{1}{2\pi RC}\).
++- **Cutoff:** $f_c = \frac{1}{2\pi RC}$.
+ - **Phase Shift:** Output lags input by up to 90°.
+ 
+ **Transient Response:**  
+-Step input causes exponential rise: \(V(t) = V_0 (1 - e^{-t/RC})\).
++Step input causes exponential rise: $V(t) = V_0 (1 - e^{-t/RC})$.
+ 
+ **Settling Time:**  
+-Time to reach within 1% of final value: \(t_s \approx 5 RC\).
++Time to reach within 1% of final value: $t_s \approx 5 RC$.
+ 
+ ***
+ 
+@@ -483,13 +483,13 @@ Time to reach within 1% of final value: \(t_s \approx 5 RC\).
+ ### 12.16.1 Self-Heating
+ 
+ **Physical Principle:**  
+-Power dissipation (\(P = I^2 R\)) raises component temperature.
++Power dissipation ($P = I^2 R$) raises component temperature.
+ 
+ **Thermal Resistance:**  
+ $$
+ \Delta T = P \times \theta_{\text{JA}}
+ $$
+-where \(\theta_{\text{JA}}\) is junction-to-ambient thermal resistance.
++where $\theta_{\text{JA}}$ is junction-to-ambient thermal resistance.
+ 
+ **Impact:**  
+ - **Resistor Drift:** Resistance changes with temperature.
+@@ -509,7 +509,7 @@ where \(\theta_{\text{JA}}\) is junction-to-ambient thermal resistance.
+ Decoupling capacitors provide local energy storage to supply transient currents.
+ 
+ **Why Needed:**  
+-- **Inductive Traces:** Power traces have inductance; rapid current changes cause voltage droop (\(V = L \frac{dI}{dt}\)).
++- **Inductive Traces:** Power traces have inductance; rapid current changes cause voltage droop ($V = L \frac{dI}{dt}$).
+ - **Solution:** Place 100 nF capacitor close to IC power pins.
+ 
+ ### 12.17.2 Ground Bounce
+@@ -671,7 +671,7 @@ Chapter 10, TC-030 (Sampling Rate Test).
+ 
+ ## Inline
+ 
+-The transfer function is \(H(s)=\frac{1}{1+sRC}\).
++The transfer function is $H(s)=\frac{1}{1+sRC}$.
+ 
+ ## Display
+ 
+@@ -681,7 +681,7 @@ $$
+ 
+ ## Greek letters
+ 
+-\(\sigma = \frac{1}{\rho}\)
++$\sigma = \frac{1}{\rho}$
+ 
+ ## Matrix
+ 
+diff --git "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-16-maintenance.md" "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-16-maintenance.md"
+index 4389012..0882332 100644
+--- "a/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/before/docs/engineering-design-dossier/chapter-16-maintenance.md"
++++ "b/home/Acharya/Aryan/Projects/ETM/\316\274ATE-STM/.tmp/inline-math/after/docs/engineering-design-dossier/chapter-16-maintenance.md"
+@@ -249,7 +249,7 @@ Documentation is a deliverable, not an afterthought:
+ - **Reliability:** Probability of functioning without failure over time.
+ - **MTBF (Mean Time Between Failures):** Expected time between failures.
+ - **MTTR (Mean Time To Repair):** Expected time to repair.
+-- **Availability:** \(A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}\).
++- **Availability:** $A = \frac{\text{MTBF}}{\text{MTBF} + \text{MTTR}}$.
+ 
+ ### 16.5.2 MTBF Estimation
+ 
+@@ -280,7 +280,7 @@ $$
+ 
+ ### 16.5.6 Failure Probability
+ 
+-**Exponential Distribution:** \(P(t) = 1 - e^{-\lambda t}\), where \(\lambda = 1/\text{MTBF}\).
++**Exponential Distribution:** $P(t) = 1 - e^{-\lambda t}$, where $\lambda = 1/\text{MTBF}$.
+ 
+ **Example:** Probability of failure in 1 year (8,760 hours):
+ $$

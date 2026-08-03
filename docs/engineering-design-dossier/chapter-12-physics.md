@@ -652,20 +652,6 @@ Chapter 10, TC-030 (Sampling Rate Test).
 
 ***
 
-## 12.22 Physics Summary
-
-| Physical Phenomenon | Governing Equation | Engineering Implication | Affected Subsystem | Mitigation Strategy | Related Chapter |
-|---------------------|--------------------|------------------------|--------------------|---------------------|-----------------|
-| **Thermal Noise** | \(V_{\text{rms}} = \sqrt{4 k_B T R \Delta f}\) | Sets noise floor | ADC, AFE | Use low R, limit BW | 8, 11 |
-| **Quantization Noise** | \(\text{SNR} = 6.02 N + 1.76\) | Limits resolution | ADC, DAC | Oversampling, dithering | 11 |
-| **RC Filtering** | \(f_c = \frac{1}{2\pi RC}\) | Anti-aliasing | AFE | Select R, C for \(f_c < f_s/2\) | 8, 11 |
-| **Clock Jitter** | \(\Delta V = \frac{dV}{dt} \Delta t\) | Degrades SNR | ADC, Clock | Low-jitter oscillator | 11 |
-| **Ground Bounce** | \(V = L \frac{dI}{dt}\) | Adds noise | ADC, Power | Decoupling, ground plane | 8 |
-| **Aliasing** | \(f_{\text{alias}} = |f_{\text{in}} - k f_s|\) | False frequencies | ADC | Anti-aliasing filter | 11 |
-| **Resistor Drift** | \(\Delta R = R \alpha \Delta T\) | Gain error | AFE, DAC | Low-TC resistors | 8 |
-| **Capacitor Charging** | \(V(t) = V_0 (1 - e^{-t/RC})\) | Settling time | ADC S/H | Ensure \(t_{\text{acq}} \gg RC\) | 8 |
-
-***
 
 # GitHub Math Test
 
